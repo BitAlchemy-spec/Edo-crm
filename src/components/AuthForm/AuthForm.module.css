@@ -1,0 +1,186 @@
+/* ==== Карточка авторизации ==== */
+.auth__card {
+  margin: 100px auto;
+  background: #ffffff; 
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  width: 100%;
+  max-width: 420px;
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* ==== Табы ==== */
+.tabs {
+  display: flex;
+  background: #f0f0f0; 
+}
+
+.tab {
+  flex: 1;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: #555;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.tab:hover {
+  background: #e0e0e0;
+  color: #000;
+}
+
+.tab.active {
+  background: var(--button-bg, #1e90ff);
+  color: #fff;
+}
+
+/* ==== Форма ==== */
+.form {
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.form__title {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  color: #222; 
+  font-weight: 700;
+}
+
+.form__group {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+/* ==== Лейблы ==== */
+.form__label {
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+  color: #333; 
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.labelIcon {
+  margin-right: 6px;
+  color: var(--label-icon-color, #1e90ff);
+  font-size: 1.1em;
+}
+
+/* Добавляем стили для inputWrapper */
+.inputWrapper {
+  position: relative; /* Создаем контекст позиционирования для дочерних абсолютных элементов */
+  display: flex; /* Чтобы инпут занимал всю доступную ширину */
+  align-items: center; /* Выравнивание по центру по вертикали */
+}
+
+/* ==== Поля ввода ==== */
+.form__input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ccc; 
+  border-radius: 10px;
+  background-color: #fff; 
+  color: #000; 
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  /* Убираем padding-right отсюда, он будет регулироваться позицией иконок */
+  /* padding-right: 70px; */ 
+}
+
+.form__input:focus {
+  outline: none;
+  border-color: var(--button-bg, #1e90ff);
+  box-shadow: 0 0 0 2px rgba(30, 144, 255, 0.3);
+}
+
+.form__input::placeholder {
+  color: #888;
+}
+
+/* Стили для иконок внутри inputWrapper */
+.clearIcon,
+.togglePasswordIcon {
+  position: absolute; /* Размещаем иконки абсолютно внутри inputWrapper */
+  top: 50%;
+  transform: translateY(-50%); /* Центрируем по вертикали */
+  cursor: pointer;
+  color: #888;
+  transition: color 0.3s ease;
+  font-size: 0.9em; /* Возможно, потребуется настроить размер */
+  z-index: 10; /* Убедимся, что иконки поверх инпута */
+}
+
+.clearIcon {
+  right: 15px; /* Отступ справа для иконки очистки */
+}
+
+.togglePasswordIcon {
+  right: 15px; /* Отступ справа для иконки переключения пароля */
+  /* Если обе иконки могут быть одновременно, то нужно сместить одну */
+  /* right: 40px; */ /* Пример, если clearIcon тоже есть и видима */
+}
+
+/* Чтобы clearIcon и togglePasswordIcon не накладывались, когда обе присутствуют */
+.inputWrapper .clearIcon + .togglePasswordIcon {
+  right: 40px; /* Смещаем иконку глаза, если есть иконка очистки */
+}
+
+
+.clearIcon:hover,
+.togglePasswordIcon:hover {
+  color: #333;
+}
+
+.clearIcon.hidden {
+  display: none;
+}
+
+.clearIcon.visible {
+  display: block;
+}
+
+/* ==== Ошибки ==== */
+.form__error {
+  color: #e74c3c;
+  font-size: 0.85em;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+/* ==== Кнопка ==== */
+.form__button {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--button-bg, #1e90ff);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 12px;
+}
+
+.form__button:hover {
+  background-color: var(--button-hover-bg, #007bff);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(30, 144, 255, 0.3);
+}
+
+.form__button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+.form__button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
