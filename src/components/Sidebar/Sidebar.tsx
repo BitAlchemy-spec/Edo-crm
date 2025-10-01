@@ -18,6 +18,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Text, Group, Tooltip, UnstyledButton } from "@mantine/core";
 
+import Header from '../Header/Header';
+
 import styles from "./Sidebar.module.css"; // Импортируем CSS Modules
 
 /* ============================
@@ -131,7 +133,10 @@ function Sidebar() {
 
       {/* Основной контент */}
       <main className={styles.content}>
-        <Outlet />
+        <Header/>
+        <div className={styles.contentWrapper}>
+          <Outlet />
+        </div>
       </main>
     </div>
   );

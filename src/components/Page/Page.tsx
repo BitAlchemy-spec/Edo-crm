@@ -1,18 +1,17 @@
 import type { ReactElement } from "react";
-// import style from "./Page.module.css";
+import styles from "./Page.module.css";
 
 interface PageProps {
   name: string;
 }
 
 /* ==============================
-   Универсальная заглушка страницы
    ============================== */
 const Page = ({ name }: PageProps): ReactElement => {
   return (
-    <div style={{ margin: "0px" + "auto" }}>
-      <h2>{name}</h2>
-      <p>Тут будет контент для сторінки "{name}"</p>
+    <div className={styles.page}>
+      <h2 className={styles.page__title}>{name}</h2>
+      <p className={styles.page__content}>Тут будет контент для сторінки "{name}"</p>
     </div>
   );
 };
