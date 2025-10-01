@@ -1,0 +1,182 @@
+/* Sidebar.module.css */
+
+/* Основной контейнер для всего макета */
+.layout {
+  display: flex; /* Используем flexbox для размещения сайдбара и контента в ряд */
+  flex-direction: row; /* Элементы располагаются по горизонтали */
+  height: 100vh; /* Занимает всю высоту окна просмотра */
+  font-family: "Inter", sans-serif; /* Единый шрифт для всего приложения */
+}
+
+/* Стили для основной навигационной панели (сайдбара) */
+.navbar {
+  display: flex;
+  flex-direction: column; /* Элементы внутри navbar располагаются по вертикали */
+  width: 400px; /* фиксированная ширина */
+  height: 100vh;
+  background-color: #fff;
+  border-right: 1px solid #e5e7eb;
+  transition: all 0.3s ease; /* Плавный переход при изменениях */
+  font-family: "Inter", sans-serif; /* Дублируем на всякий случай, если .layout не задаст */
+}
+
+/* Обертка для основного и бокового содержимого навигации */
+.wrapper {
+  display: flex;
+  flex-direction: column; /* Изменил на column для лучшей структуры sidebar */
+  height: 100%;
+}
+
+/* Стили для секции с основными иконками в сайдбаре (сверху или сбоку) */
+.aside {
+  display: flex;
+  flex-direction: column; /* Элементы внутри aside располагаются по вертикали */
+  align-items: flex-start; /* Выравнивание иконок по центру */
+  padding: 16px 8px;
+  border-right: 1px solid #e5e7eb;
+  background: #fafafa;
+}
+
+/* Стили для отдельных основных ссылок/иконок в aside */
+.mainLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  margin: 8px 0;
+  color: #6b7280;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  font-size: 16px;
+  text-decoration: none; /* Убираем подчеркивание у ссылок внутри NavLink */
+}
+
+.mainLink:hover {
+  background: #f3f4f6;
+  color: #2563eb;
+}
+
+/* Стиль для активной основной ссылки (используется через data-active атрибут) */
+.mainLink[data-active="true"] {
+  background: #e0ecff;
+  color: #2563eb;
+}
+/* Стили для NavLink внутри mainLink, чтобы иконка была синей */
+.mainLink a.active {
+  color: #2563eb;
+}
+
+
+/* Стили для основной секции навигации (список ссылок) */
+.main {
+  flex: 1; /* Занимает все доступное пространство по вертикали в navbar */
+  padding: 20px;
+  overflow-y: auto; /* Позволяет прокручивать содержимое, если оно не помещается */
+}
+
+/* Заголовки для секций навигации */
+.title {
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #111827;
+}
+
+/* Стили для обычных ссылок навигации */
+.link {
+  display: flex;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 8px;
+  text-decoration: none; /* Убираем подчеркивание */
+  color: #374151;
+  font-size: 15px;
+  margin-bottom: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* Стили для иконок внутри ссылок */
+.icon {
+  margin-right: 12px;
+  font-size: 16px;
+  color: #9ca3af;
+  flex-shrink: 0; /* Предотвращает сжатие иконки */
+}
+
+.link:hover {
+  background: #f3f4f6;
+  color: #2563eb;
+}
+
+.link:hover .icon {
+  color: #2563eb;
+}
+
+/* Стиль для активной ссылки навигации */
+.active {
+  background: #e0ecff;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.active .icon {
+  color: #2563eb;
+}
+
+/* ------------------------------------------- */
+/* Стили для основного контента справа от сайдбара */
+.content {
+  flex: 1; /* Позволяет контенту занимать все оставшееся пространство */
+  padding: 20px;
+  background-color: #f9fafb; /* Немного другой фон для отличия */
+  overflow-y: auto; /* Позволяет прокручивать содержимое */
+}
+
+
+/* 📱 Мобильная адаптация */
+@media (max-width: 768px) {
+  /* Сайдбар фиксируется и становится уже */
+  .navbar {
+    position: fixed; /* Фиксированное положение */
+    top: 0;
+    left: 0;
+    width: 280px; /* компактнее */
+    height: 100%;
+    z-index: 1000; /* Поверх другого контента */
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15); /* Тень для выделения */
+    transform: translateX(-100%); /* По умолчанию скрыт на мобильных */
+  }
+
+  /* Основной враппер меняет направление на вертикальное */
+  .wrapper {
+    flex-direction: column;
+  }
+
+  /* Секция aside меняет направление на горизонтальное */
+  .aside {
+    flex-direction: row; /* Элементы в aside располагаются по горизонтали */
+    justify-content: flex-start; /* Выравнивание по левому краю */
+    border-right: none; /* Убираем правую границу */
+    border-bottom: 1px solid #e5e7eb; /* Добавляем нижнюю границу */
+    padding: 10px;
+    background: #fafafa;
+  }
+
+  /* Отступы для основных ссылок на мобильных */
+  .mainLink {
+    margin: 0 6px;
+  }
+
+  /* Отступы для основной секции навигации на мобильных */
+  .main {
+    padding: 16px;
+  }
+
+  /* Контент сдвигается, чтобы сайдбар не перекрывал его */
+  .content {
+    margin-left: 0; /* Убираем отступ */
+    padding-top: 70px; /* Отступ сверху, чтобы контент не перекрывался aside в мобильном виде */
+  }
+}
