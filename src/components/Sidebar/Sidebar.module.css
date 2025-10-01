@@ -1,6 +1,8 @@
 /* Sidebar.module.css */
 
-/* Основной контейнер для всего макета */
+/* ============================
+ * Основной layout
+ * ============================ */
 .layout {
   display: flex; /* Используем flexbox для размещения сайдбара и контента в ряд */
   flex-direction: row; /* Элементы располагаются по горизонтали */
@@ -8,16 +10,21 @@
   font-family: "Inter", sans-serif; /* Единый шрифт для всего приложения */
 }
 
-/* Стили для основной навигационной панели (сайдбара) */
+/* ============================
+ * Стили навбара
+ * ============================ */
 .navbar {
   display: flex;
   flex-direction: column; /* Элементы внутри navbar располагаются по вертикали */
-  width: 400px; /* фиксированная ширина */
+  width: 300px; /* фиксированная ширина */
   height: 100vh;
   background-color: #fff;
   border-right: 1px solid #e5e7eb;
-  transition: all 0.3s ease; /* Плавный переход при изменениях */
+  transition: width 0.3s ease, all 0.3s ease; /* Плавный переход при изменениях */
   font-family: "Inter", sans-serif; /* Дублируем на всякий случай, если .layout не задаст */
+  position: relative;
+  background-color: white;
+  box-shadow: 1px 0 3px rgba(0, 0, 0, 0.1);
 }
 
 /* Обертка для основного и бокового содержимого навигации */
@@ -35,6 +42,7 @@
   padding: 16px 8px;
   border-right: 1px solid #e5e7eb;
   background: #fafafa;
+  background-color: white;
 }
 
 /* Стили для отдельных основных ссылок/иконок в aside */
@@ -85,7 +93,9 @@
   color: #111827;
 }
 
-/* Стили для обычных ссылок навигации */
+/* ============================
+ * Стили навигационных ссылок
+ * ============================ */
 .link {
   display: flex;
   align-items: center;
@@ -115,7 +125,9 @@
   color: #2563eb;
 }
 
-/* Стиль для активной ссылки навигации */
+/* ============================
+ * Активное состояние ссылок
+ * ============================ */
 .active {
   background: #e0ecff;
   font-weight: 600;
@@ -124,6 +136,75 @@
 
 .active .icon {
   color: #2563eb;
+}
+
+/* ============================
+ * Кнопка сворачивания
+ * ============================ */
+.collapseBtn {
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f0f0f0;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  z-index: 100;
+}
+
+/* Иконка кнопки сворачивания */
+.collapseIcon {
+  transition: transform 0.3s ease;
+  font-size: 5px;
+}
+
+/* ============================
+ * Стили для свернутого состояния
+ * ============================ */
+.collapsed {
+  width: 80px;
+}
+
+.collapsed .main span {
+  display: none;
+}
+
+.collapsed .title {
+  display: none;
+}
+
+/* ============================
+ * Логотип
+ * ============================ */
+.logoCircle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #FFD700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.logoCircle span {
+  color: #000;
+  font-weight: bold;
+}
+
+.mainLink {
+  text-decoration: none;
+  padding: 10px;
+}
+
+.activeNavLink {
+  text-decoration: none;
 }
 
 /* ------------------------------------------- */

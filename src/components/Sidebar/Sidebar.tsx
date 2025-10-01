@@ -11,21 +11,25 @@ import {
   faAddressBook,
   faBuilding,
   faMoneyBill,
-  faQuestionCircle,
   faFileSignature,
   faHome,
+  faChevronLeft,
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+import { Text, Group, Tooltip, UnstyledButton } from "@mantine/core";
 
-import { Title, Tooltip, UnstyledButton } from "@mantine/core";
 import styles from "./Sidebar.module.css"; // Импортируем CSS Modules
 
-/* ==============================
-   Ссылки в боковой панели
-   ============================== */
+/* ============================
+ * Конфигурация навигации
+ * ============================ */
 const mainLinksData = [
   { icon: faHome, label: "Головна", to: "/dashboard" },
 ];
 
+/* ============================
+ * Основное меню навигации
+ * ============================ */
 const linksData = [
   { label: "Зовнішні документи", icon: faFileSignature, to: "external" },
   { label: "Вхідні документи", icon: faFileImport, to: "incoming" },
@@ -35,15 +39,19 @@ const linksData = [
   { label: "Чернетки", icon: faFile, to: "drafts" },
   { label: "Шаблони", icon: faShapes, to: "templates" },
   { label: "Контакти контрагентів", icon: faAddressBook, to: "contacts" },
-  { label: "Налаштування компанії", icon: faBuilding, to: "company" },
-  { label: "Тарифи", icon: faMoneyBill, to: "pricing" },
-  { label: "Корисне", icon: faQuestionCircle, to: "help" },
+  { label: "Налаштування компанії", icon: faBuilding, to: "pricing" },
+  { label: "Тарифи", icon: faMoneyBill, to: "help" },
 ];
 
+/* ============================
+ * Основной компонент Sidebar
+ * ============================ */
 function Sidebar() {
-  const [active, setActive] = useState("Головна"); 
+  // Состояния компонента
+  const [active, setActive] = useState("Головна");
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
-  // ==== верхние иконки ====
+  /* Рендер логотипа и главной навигации */
   const mainLinks = mainLinksData.map((link) => (
     <Tooltip
       label={link.label}
@@ -51,7 +59,7 @@ function Sidebar() {
       withArrow
       transitionProps={{ duration: 0 }}
       key={link.label}
-    > 
+    >
       <UnstyledButton
         onClick={() => setActive(link.label)}
         data-active={link.label === active ? "true" : undefined}
@@ -61,13 +69,19 @@ function Sidebar() {
           to={link.to}
           className={({ isActive }) => (isActive ? styles.activeNavLink : "")}
         >
-          <h2>ЕДО</h2>
+          <Group>
+            <div className={styles.logoCircle}>
+              <Text size="xl">
+                ЕДО
+              </Text>
+            </div>
+          </Group>
         </NavLink>
       </UnstyledButton>
     </Tooltip>
   ));
 
-  // ==== боковые ссылки ====
+  /* Рендер боковых ссылок навигации */
   const links = linksData.map((link) => (
     <NavLink
       className={({ isActive }) =>
@@ -83,29 +97,41 @@ function Sidebar() {
 
   return (
     <div className={styles.layout}>
-      {/* Левая панель */}
-      <nav className={styles.navbar}>
+      {/* Боковая панель навигации */}
+      <nav className={`${styles.navbar} ${isCollapsed ? styles.collapsed : ''}`}>
+        {/* Кнопка сворачивания/разворачивания */}
+        <Tooltip
+          label={isCollapsed ? "Розгорнути" : "Згорнути"}
+          position="right"
+          withArrow
+        >
+          <UnstyledButton
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            className={styles.collapseBtn}
+          >
+            <FontAwesomeIcon 
+              icon={isCollapsed ? faChevronRight : faChevronLeft}
+              className={styles.collapseIcon}
+            />
+          </UnstyledButton>
+        </Tooltip>
+        
         <div className={styles.wrapper}>
+          {/* Секция с логотипом */}
           <div className={styles.aside}>
             {mainLinks}
-            {/* Если нужно, чтобы "Настройки" были в самом низу "aside", 
-                можно добавить их сюда, например, с другим классом 
-                или обернуть в отдельный flex-контейнер с justify-content: space-between */}
           </div>
 
+          {/* Основное меню навигации */}
           <div className={styles.main}>
-            {/* Здесь используем active состояние для заголовка */}
-            <Title order={4} className={styles.title}>
-              {active}
-            </Title>
             {links}
           </div>
         </div>
       </nav>
 
-      {/* Контент справа */}
+      {/* Основной контент */}
       <main className={styles.content}>
-        <Outlet /> {/* здесь будут рендериться страницы */}
+        <Outlet />
       </main>
     </div>
   );
