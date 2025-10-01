@@ -48,23 +48,24 @@
   margin: 8px 0;
   color: #6b7280;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
   font-size: 16px;
-  text-decoration: none; /* Убираем подчеркивание у ссылок внутри NavLink */
+  text-decoration: none; 
+  border: none;
 }
 
 .mainLink:hover {
-  background: #f3f4f6;
+  text-decoration: none;
   color: #2563eb;
 }
 
 /* Стиль для активной основной ссылки (используется через data-active атрибут) */
 .mainLink[data-active="true"] {
-  background: #e0ecff;
+  text-decoration: none;
   color: #2563eb;
 }
 /* Стили для NavLink внутри mainLink, чтобы иконка была синей */
 .mainLink a.active {
+  text-decoration: none;
   color: #2563eb;
 }
 

@@ -61,7 +61,7 @@ function Sidebar() {
           to={link.to}
           className={({ isActive }) => (isActive ? styles.activeNavLink : "")}
         >
-          <FontAwesomeIcon icon={link.icon} size="lg" />
+          <h2>ЕДО</h2>
         </NavLink>
       </UnstyledButton>
     </Tooltip>
