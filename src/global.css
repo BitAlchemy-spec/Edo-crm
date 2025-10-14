@@ -68,6 +68,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1rem;
+  overflow: hidden;
 }
 th, td {          
   border: 1px solid #dee2e6;

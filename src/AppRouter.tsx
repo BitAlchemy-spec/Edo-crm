@@ -19,18 +19,7 @@ const routes = [
     path: "/dashboard",
     element: <Sidebar />, // Sidebar как layout
     children: [
-      { path: "external", element: <Page name="Зовнішні документи" /> },
-      { path: "incoming", element: <Page name="Вхідні документи" /> },
-      { path: "outgoing", element: <Page name="Вихідні документи" /> },
-      { path: "internal", element: <Page name="Внутрішні документи" /> },
-      { path: "archive", element: <Page name="Архів" /> },
-      { path: "drafts", element: <Page name="Чернетки" /> },
-      { path: "templates", element: <Page name="Шаблони" /> },
-      { path: "contacts", element: <Page name="Контакти контрагентів" /> },
-      { path: "company", element: <Page name="Налаштування компанії" /> },
-      { path: "pricing", element: <Page name="Тарифи" /> },
-      { path: "help", element: <Page name="Корисне" /> },
-      { path: "settings", element: <Page name="Налаштування" /> },
+      { path: "external", element: <Page/> },
     ],
   },
 ];

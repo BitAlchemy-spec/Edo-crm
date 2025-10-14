@@ -4,9 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "dev": "vite --port 3000",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -17,6 +16,7 @@
     "@mantine/core": "^8.3.2",
     "@mantine/hooks": "^8.3.2",
     "@tabler/icons-react": "^3.35.0",
+    "normalize": "^0.3.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-hook-form": "^7.63.0",

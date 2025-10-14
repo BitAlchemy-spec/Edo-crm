@@ -1,19 +1,18 @@
-import type { ReactElement } from "react";
+import { type ReactElement } from "react";
 import styles from "./Page.module.css";
-
-interface PageProps {
-  name: string;
-}
+import { DocumentsTable } from "./Table/TableSelection";
 
 /* ==============================
+   Page Component
    ============================== */
-const Page = ({ name }: PageProps): ReactElement => {
+const Page = (): ReactElement => {
   return (
     <div className={styles.page}>
-      <h2 className={styles.page__title}>{name}</h2>
-      <p className={styles.page__content}>Тут будет контент для сторінки "{name}"</p>
+      <DocumentsTable />
     </div>
   );
 };
 
 export default Page;
+
+
