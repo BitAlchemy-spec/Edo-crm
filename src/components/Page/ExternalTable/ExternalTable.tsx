@@ -1,6 +1,6 @@
 import { Table, Text, Group, ActionIcon } from '@mantine/core';
 import { IconDownload } from '@tabler/icons-react'; // Импортируем иконку для скачивания
-import './TableReviews.css';
+import './ExternalReviews.css';
 
 interface Document {
   id: string;
@@ -42,7 +42,7 @@ const documentsData: Document[] = [
   },
 ];
 
-export function DocumentsTable() {
+export function ExternalTable() {
   const rows = documentsData.map((item: Document) => (
     <Table.Tr key={item.id} className="documents-table__row">
       <Table.Td className="documents-table__cell">

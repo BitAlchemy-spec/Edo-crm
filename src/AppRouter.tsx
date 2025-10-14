@@ -4,11 +4,9 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import Sidebar from "./components/Sidebar/Sidebar";
 import AuthForm from "./components/AuthForm/AuthForm";
-import Page from "./components/Page/Page"; // <-- вынес заглушку в отдельный компонент
+import External from "./components/Page/External"; 
 
-/* ==============================
-   Определяем роуты
-   ============================== */
+
 const routes = [
   {
     path: "/",
@@ -16,22 +14,15 @@ const routes = [
     errorElement: <div>Щось пішло не так...</div>,
   },
   {
-    path: "/dashboard",
-    element: <Sidebar />, // Sidebar как layout
+    element: <Sidebar />,
     children: [
-      { path: "external", element: <Page/> },
+      { path: "external", element: <External/> },
     ],
   },
 ];
 
-/* ==============================
-   Создаём роутер
-   ============================== */
 const router = createBrowserRouter(routes);
 
-/* ==============================
-   Оборачиваем всё в MantineProvider
-   ============================== */
 const AppRouter = (): ReactElement => {
   return (
     <MantineProvider>
