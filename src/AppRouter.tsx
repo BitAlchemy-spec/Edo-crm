@@ -4,7 +4,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import Sidebar from "./components/Sidebar/Sidebar";
 import AuthForm from "./components/AuthForm/AuthForm";
-import External from "./components/Page/External"; 
+import External from "./components/External/External"; 
 
 
 const routes = [
