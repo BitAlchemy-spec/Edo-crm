@@ -10,13 +10,14 @@ import {
   faEyeSlash,
 } from '@fortawesome/free-solid-svg-icons';
 import styles from './AuthForm.module.css';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
+import logo from '../../assets/logo.svg';
 
 type RegisterFormInputs = {
   username: string;
   email: string;
   password: string;
-  confirmPassword: string; 
+  confirmPassword: string;
 };
 
 type LoginFormInputs = {
@@ -29,7 +30,7 @@ const AuthForm: React.FC = () => {
 
   const [activeTab, setActiveTab] = useState<'register' | 'login'>('login');
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false); 
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   // === Register form ===
   const {
@@ -57,30 +58,19 @@ const AuthForm: React.FC = () => {
   const loginPassword = watchLogin('password', '');
   const registerUsername = watchRegister('username', '');
   const registerPassword = watchRegister('password', '');
-  const registerConfirmPassword = watchRegister('confirmPassword', ''); // Watcher для подтверждения пароля
+  const registerConfirmPassword = watchRegister('confirmPassword', '');
 
   const onRegister = (data: RegisterFormInputs) => {
     console.log('Регистрация:', data);
-    // Здесь вы бы отправили данные на сервер
-    // После успешной регистрации можно, например, переключиться на вкладку входа
-    // или сразу перенаправить на дашборд, если регистрация подразумевает автоматический вход.
-    // Для простоты примера, просто сбросим форму.
     resetRegister();
-    // navigate('/dashboard'); // Пример перенаправления после регистрации
   };
 
   const onLogin = (data: LoginFormInputs) => {
     console.log('Вход:', data);
-    // Здесь ваша логика аутентификации на сервере
-    // Предположим, что вход прошел успешно
-    const loginSuccess = true; // Замените на реальную проверку ответа сервера
-
+    const loginSuccess = true;
     if (loginSuccess) {
-      resetLogin(); // Сбросить форму после успешного входа
-      navigate('/dashboard'); // Перенаправляем на дашборд
-    } else {
-      // Обработка ошибки входа (например, отображение сообщения об ошибке)
-      console.log('Ошибка входа: неверные учетные данные');
+      resetLogin();
+      navigate('/external');
     }
   };
 
@@ -88,6 +78,15 @@ const AuthForm: React.FC = () => {
     <div className={styles.authWrapper}>
       <div className={styles.auth}>
         <div className={styles.auth__card}>
+         {/* === ЛОГО === */}
+          <div className={styles.logoContainer}>
+            <img src={logo} alt="Logo" className={styles.logo} />
+            <div className={styles.logoText}>
+              <h2 className={styles.brandName}>EDO</h2>
+              <p className={styles.brandDesc}>Електронний документообіг</p>
+            </div>
+          </div>
+          {/* === ТАБЫ === */}
           <div className={styles.tabs}>
             <button
               className={`${styles.tab} ${activeTab === 'register' ? styles.active : ''}`}
@@ -115,8 +114,8 @@ const AuthForm: React.FC = () => {
                   <input
                     type="text"
                     className={styles.form__input}
-                    placeholder="Введите имя"
-                    {...register('username', { required: 'Введите имя пользователя' })}
+                    placeholder="Введите имя:"
+                    {...register('username', { required: 'Введите имя пользователя:' })}
                   />
                   <FontAwesomeIcon
                     icon={faTimes}
@@ -142,7 +141,7 @@ const AuthForm: React.FC = () => {
                     className={styles.form__input}
                     placeholder="Введите email"
                     {...register('email', {
-                      required: 'Введите email',
+                      required: 'Введите email:',
                       pattern: {
                         value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
                         message: 'Некорректный формат email',
@@ -171,7 +170,7 @@ const AuthForm: React.FC = () => {
                   <input
                     type={showPassword ? 'text' : 'password'}
                     className={styles.form__input}
-                    placeholder="Введите пароль"
+                    placeholder="Введите пароль:"
                     {...register('password', {
                       required: 'Введите пароль',
                       minLength: {
@@ -207,7 +206,7 @@ const AuthForm: React.FC = () => {
                   <input
                     type={showConfirmPassword ? 'text' : 'password'}
                     className={styles.form__input}
-                    placeholder="Повторите пароль"
+                    placeholder="Повторите пароль:"
                     {...register('confirmPassword', {
                       required: 'Пожалуйста, подтвердите пароль',
                       validate: (value) =>
@@ -250,7 +249,7 @@ const AuthForm: React.FC = () => {
                   <input
                     type="email"
                     className={styles.form__input}
-                    placeholder="Введите email"
+                    placeholder="Введите email:"
                     {...loginRegister('email', {
                       required: 'Введите email',
                       pattern: {
@@ -261,7 +260,9 @@ const AuthForm: React.FC = () => {
                   />
                   <FontAwesomeIcon
                     icon={faTimes}
-                    className={`${styles.clearIcon} ${loginEmail ? styles.visible : styles.hidden}`}
+                    className={`${styles.clearIcon} ${
+                      loginEmail ? styles.visible : styles.hidden
+                    }`}
                     onClick={() => setLoginValue('email', '')}
                   />
                 </div>
@@ -279,7 +280,7 @@ const AuthForm: React.FC = () => {
                   <input
                     type={showPassword ? 'text' : 'password'}
                     className={styles.form__input}
-                    placeholder="Введите пароль"
+                    placeholder="Введите пароль:"
                     {...loginRegister('password', {
                       required: 'Введите пароль',
                       minLength: {
@@ -318,3 +319,4 @@ const AuthForm: React.FC = () => {
 };
 
 export default AuthForm;
+

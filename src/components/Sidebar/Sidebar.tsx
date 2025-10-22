@@ -12,26 +12,16 @@ import {
   faBuilding,
   faMoneyBill,
   faFileSignature,
-  faHome,
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
-import { Text, Group, Tooltip, UnstyledButton } from "@mantine/core";
+import { Tooltip, UnstyledButton } from "@mantine/core";
 
-import Header from '../Header/Header';
+import Header from "../Header/Header";
+import logo from "../../assets/logo.svg";
+import styles from "./Sidebar.module.css";
 
-import styles from "./Sidebar.module.css"; // Импортируем CSS Modules
-
-/* ============================
- * Конфигурация навигации
- * ============================ */
-const mainLinksData = [
-  { icon: faHome, label: "Головна", to: "/dashboard" },
-];
-
-/* ============================
- * Основное меню навигации
- * ============================ */
+/* Конфигурация навигации */
 const linksData = [
   { label: "Зовнішні документи", icon: faFileSignature, to: "external" },
   { label: "Вхідні документи", icon: faFileImport, to: "incoming" },
@@ -45,45 +35,10 @@ const linksData = [
   { label: "Тарифи", icon: faMoneyBill, to: "help" },
 ];
 
-/* ============================
- * Основной компонент Sidebar
- * ============================ */
+/* Компонент Sidebar */
 function Sidebar() {
-  // Состояния компонента
-  const [active, setActive] = useState("Головна");
   const [isCollapsed, setIsCollapsed] = useState(false);
 
-  /* Рендер логотипа и главной навигации */
-  const mainLinks = mainLinksData.map((link) => (
-    <Tooltip
-      label={link.label}
-      position="right"
-      withArrow
-      transitionProps={{ duration: 0 }}
-      key={link.label}
-    >
-      <UnstyledButton
-        onClick={() => setActive(link.label)}
-        data-active={link.label === active ? "true" : undefined}
-        className={styles.mainLink}
-      >
-        <NavLink
-          to={link.to}
-          className={({ isActive }) => (isActive ? styles.activeNavLink : "")}
-        >
-          <Group>
-            <div className={styles.logoCircle}>
-              <Text size="xl">
-                ЕДО
-              </Text>
-            </div>
-          </Group>
-        </NavLink>
-      </UnstyledButton>
-    </Tooltip>
-  ));
-
-  /* Рендер боковых ссылок навигации */
   const links = linksData.map((link) => (
     <NavLink
       className={({ isActive }) =>
@@ -99,9 +54,7 @@ function Sidebar() {
 
   return (
     <div className={styles.layout}>
-      {/* Боковая панель навигации */}
-      <nav className={`${styles.navbar} ${isCollapsed ? styles.collapsed : ''}`}>
-        {/* Кнопка сворачивания/разворачивания */}
+      <nav className={`${styles.navbar} ${isCollapsed ? styles.collapsed : ""}`}>
         <Tooltip
           label={isCollapsed ? "Розгорнути" : "Згорнути"}
           position="right"
@@ -111,29 +64,28 @@ function Sidebar() {
             onClick={() => setIsCollapsed(!isCollapsed)}
             className={styles.collapseBtn}
           >
-            <FontAwesomeIcon 
+            <FontAwesomeIcon
               icon={isCollapsed ? faChevronRight : faChevronLeft}
               className={styles.collapseIcon}
             />
           </UnstyledButton>
         </Tooltip>
-        
+
         <div className={styles.wrapper}>
-          {/* Секция с логотипом */}
-          <div className={styles.aside}>
-            {mainLinks}
+          <div className={styles.logoContainer}>
+            <img src={logo} alt="Logo" className={styles.logo} />
+            <div className={styles.logoText}>
+              <h2>EDO</h2>
+              <p>Електронний документообіг</p>
+            </div>
           </div>
 
-          {/* Основное меню навигации */}
-          <div className={styles.main}>
-            {links}
-          </div>
+          <div className={styles.main}>{links}</div>
         </div>
       </nav>
 
-      {/* Основной контент */}
       <main className={styles.content}>
-        <Header/>
+        <Header />
         <div className={styles.contentWrapper}>
           <Outlet />
         </div>
@@ -143,7 +95,4 @@ function Sidebar() {
 }
 
 export default Sidebar;
-
-
-
 
