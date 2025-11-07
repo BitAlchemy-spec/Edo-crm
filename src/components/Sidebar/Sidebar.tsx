@@ -3,13 +3,12 @@
  * Предоставляет основную навигацию по разделам приложения
  */
 import { useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFileImport,
   faFileExport,
   faFileAlt,
-  faMoneyBill,
   faFileSignature,
   faChevronLeft,
   faChevronRight,
@@ -36,8 +35,8 @@ const linksData = [
  * Отображает боковую панель навигации с возможностью сворачивания
  */
 function Sidebar() {
-  // Состояние для управления сворачиванием/разворачиванием сайдбара
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const navigate = useNavigate(); // ✅ Хук для переходов по маршрутам
 
   // Генерация ссылок навигации на основе конфигурации
   const links = linksData.map((link) => (
@@ -76,7 +75,11 @@ function Sidebar() {
 
         <div className={styles.wrapper}>
           {/* Логотип и название приложения */}
-          <div className={styles.logoContainer}>
+          <div
+            className={styles.logoContainer}
+            onClick={() => navigate("/")} // ✅ Клик ведет на главную страницу
+            style={{ cursor: "pointer" }} // Добавляем визуальный эффект
+          >
             <img src={logo} alt="Logo" className={styles.logo} />
             <div className={styles.logoText}>
               <h2>EDO</h2>
