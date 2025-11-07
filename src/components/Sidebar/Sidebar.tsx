@@ -1,3 +1,7 @@
+/**
+ * Компонент боковой панели навигации
+ * Предоставляет основную навигацию по разделам приложения
+ */
 import { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -5,11 +9,6 @@ import {
   faFileImport,
   faFileExport,
   faFileAlt,
-  faFolder,
-  faFile,
-  faShapes,
-  faAddressBook,
-  faBuilding,
   faMoneyBill,
   faFileSignature,
   faChevronLeft,
@@ -21,24 +20,27 @@ import Header from "../Header/Header";
 import logo from "../../assets/logo.svg";
 import styles from "./Sidebar.module.css";
 
-/* Конфигурация навигации */
+/**
+ * Конфигурация пунктов навигации
+ * Определяет структуру меню с иконками и маршрутами
+ */
 const linksData = [
   { label: "Зовнішні документи", icon: faFileSignature, to: "external" },
   { label: "Вхідні документи", icon: faFileImport, to: "incoming" },
   { label: "Вихідні документи", icon: faFileExport, to: "outgoing" },
   { label: "Внутрішні документи", icon: faFileAlt, to: "internal" },
-  { label: "Архів", icon: faFolder, to: "archive" },
-  { label: "Чернетки", icon: faFile, to: "drafts" },
-  { label: "Шаблони", icon: faShapes, to: "templates" },
-  { label: "Контакти контрагентів", icon: faAddressBook, to: "contacts" },
-  { label: "Налаштування компанії", icon: faBuilding, to: "pricing" },
   { label: "Тарифи", icon: faMoneyBill, to: "help" },
 ];
 
-/* Компонент Sidebar */
+/**
+ * Компонент Sidebar
+ * Отображает боковую панель навигации с возможностью сворачивания
+ */
 function Sidebar() {
+  // Состояние для управления сворачиванием/разворачиванием сайдбара
   const [isCollapsed, setIsCollapsed] = useState(false);
 
+  // Генерация ссылок навигации на основе конфигурации
   const links = linksData.map((link) => (
     <NavLink
       className={({ isActive }) =>
@@ -54,7 +56,9 @@ function Sidebar() {
 
   return (
     <div className={styles.layout}>
+      {/* Боковая панель навигации */}
       <nav className={`${styles.navbar} ${isCollapsed ? styles.collapsed : ""}`}>
+        {/* Кнопка сворачивания/разворачивания */}
         <Tooltip
           label={isCollapsed ? "Розгорнути" : "Згорнути"}
           position="right"
@@ -72,6 +76,7 @@ function Sidebar() {
         </Tooltip>
 
         <div className={styles.wrapper}>
+          {/* Логотип и название приложения */}
           <div className={styles.logoContainer}>
             <img src={logo} alt="Logo" className={styles.logo} />
             <div className={styles.logoText}>
@@ -80,13 +85,16 @@ function Sidebar() {
             </div>
           </div>
 
+          {/* Основное меню навигации */}
           <div className={styles.main}>{links}</div>
         </div>
       </nav>
 
+      {/* Основная область контента */}
       <main className={styles.content}>
         <Header />
         <div className={styles.contentWrapper}>
+          {/* Outlet для рендеринга дочерних маршрутов */}
           <Outlet />
         </div>
       </main>

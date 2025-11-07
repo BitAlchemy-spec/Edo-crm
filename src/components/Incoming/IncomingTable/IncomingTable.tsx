@@ -1,48 +1,40 @@
 import { Table, Text, Group, ActionIcon } from '@mantine/core';
-import { IconDownload } from '@tabler/icons-react'; // Импортируем иконку для скачивания
+import { IconDownload } from '@tabler/icons-react';
 import '../../shared/DocumentsTable.css';
 
 interface Document {
   id: string;
   title: string;
   author: string;
-  downloadLink: string; // Добавили поле для ссылки на скачивание
+  date: string;
+  downloadLink: string;
 }
 
 const documentsData: Document[] = [
   {
-    id: 'doc-1',
-    title: 'Proposal Q3',
-    author: 'Alice Johnson',
-    downloadLink: '/documents/proposal_q3.pdf', // Пример ссылки
+    id: 'inc-1',
+    title: 'Договір про постачання',
+    author: 'Олена Петренко',
+    date: '2024-01-15',
+    downloadLink: '/documents/incoming_1.pdf',
   },
   {
-    id: 'doc-2',
-    title: 'Meeting Minutes',
-    author: 'Bob Williams',
-    downloadLink: '/documents/meeting_minutes.docx',
+    id: 'inc-2',
+    title: 'Акт виконаних робіт',
+    author: 'Михайло Коваленко',
+    date: '2024-01-14',
+    downloadLink: '/documents/incoming_2.pdf',
   },
   {
-    id: 'doc-3',
-    title: 'Financial Report July',
-    author: 'Charlie Brown',
-    downloadLink: '/documents/financial_report_july.xlsx',
-  },
-  {
-    id: 'doc-4',
-    title: 'Marketing Strategy',
-    author: 'Diana Prince',
-    downloadLink: '/documents/marketing_strategy.pdf',
-  },
-  {
-    id: 'doc-5',
-    title: 'HR Policy Updates',
-    author: 'Eve Adams',
-    downloadLink: '/documents/hr_policy_updates.pdf',
+    id: 'inc-3',
+    title: 'Рахунок-фактура №123',
+    author: 'Тетяна Сидоренко',
+    date: '2024-01-13',
+    downloadLink: '/documents/incoming_3.pdf',
   },
 ];
 
-export function ExternalTable() {
+export function IncomingTable() {
   const rows = documentsData.map((item: Document) => (
     <Table.Tr key={item.id} className="documents-table__row">
       <Table.Td className="documents-table__cell">
@@ -53,13 +45,13 @@ export function ExternalTable() {
         </Group>
       </Table.Td>
       <Table.Td className="documents-table__cell documents-table__author">{item.author}</Table.Td>
-      {/* Новая ячейка для скачивания */}
+      <Table.Td className="documents-table__cell">{item.date}</Table.Td>
       <Table.Td className="documents-table__cell documents-table__download-cell">
         <ActionIcon
-          component="a" // Делаем иконку ссылкой
+          component="a"
           href={item.downloadLink}
-          download // Атрибут download для скачивания файла
-          variant="subtle" // Стиль кнопки
+          download
+          variant="subtle"
           color="gray"
           aria-label={`Скачать ${item.title}`}
         >
@@ -73,8 +65,9 @@ export function ExternalTable() {
       <Table className="documents-table">
         <Table.Thead className="documents-table__head">
           <Table.Tr className="documents-table__row">
-            <Table.Th className="documents-table__header-cell">Зовнішні документи</Table.Th>
+            <Table.Th className="documents-table__header-cell">Вхідні документи</Table.Th>
             <Table.Th className="documents-table__header-cell">Автор</Table.Th>
+            <Table.Th className="documents-table__header-cell">Дата</Table.Th>
             <Table.Th className="documents-table__header-cell documents-table__header-cell--download"></Table.Th>
           </Table.Tr>
         </Table.Thead>
@@ -82,3 +75,4 @@ export function ExternalTable() {
       </Table>
   );
 }
+

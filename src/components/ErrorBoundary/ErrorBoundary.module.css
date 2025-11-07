@@ -1,0 +1,109 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  text-align: center;
+  background-color: #f8f9fa;
+}
+
+.icon {
+  font-size: 4rem;
+  margin: 0;
+  color: #dc3545;
+}
+
+.title {
+  font-size: 2rem;
+  margin: 1rem 0;
+  color: #212529;
+}
+
+.description {
+  font-size: 1rem;
+  color: #6c757d;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.errorDetails {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  max-width: 800px;
+  text-align: left;
+}
+
+.errorSummary {
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.errorPre {
+  overflow: auto;
+  font-size: 0.875rem;
+  color: #dc3545;
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.buttonRetry {
+  background-color: #007bff;
+}
+
+.buttonRetry:hover {
+  background-color: #0056b3;
+}
+
+.buttonHome {
+  background-color: #6c757d;
+}
+
+.buttonHome:hover {
+  background-color: #5a6268;
+}
+
+@media (max-width: 768px) {
+  .icon {
+    font-size: 3rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 0.875rem;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+
