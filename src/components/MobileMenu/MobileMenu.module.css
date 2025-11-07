@@ -1,0 +1,65 @@
+/* ====== Корневой блок ====== */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    border-bottom: 1px solid #dee2e6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    z-index: 1050;
+    padding: 0.4rem 0;
+  }
+  
+  /* Показываем только на мобильных */
+  @media (max-width: 768px) {
+    .mobile-menu {
+      display: block;
+    }
+  }
+  
+  /* ====== Список ====== */
+  .mobile-menu__list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  /* ====== Элемент ====== */
+  .mobile-menu__item {
+    flex: 1;
+    text-align: center;
+  }
+  
+  /* ====== Кнопка-ссылка ====== */
+  .mobile-menu__link {
+    background: none;
+    border: none;
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
+    color: #343a40;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.6rem 0.3rem;
+    width: 100%;
+    cursor: pointer;
+    transition: color 0.25s ease, background-color 0.25s ease;
+    border-radius: 6px;
+  }
+  
+  .mobile-menu__link:hover {
+    color: #0d6efd;
+    background-color: rgba(13, 110, 253, 0.05);
+  }
+  
+  /* ====== Активный элемент ====== */
+  .mobile-menu__link--active {
+    color: #0d6efd;
+    font-weight: 600;
+    background-color: rgba(13, 110, 253, 0.08);
+  }
+  
+  

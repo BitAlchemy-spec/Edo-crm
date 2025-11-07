@@ -16,8 +16,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Tooltip, UnstyledButton } from "@mantine/core";
 
-import Header from "../Header/Header";
-import logo from "../../assets/logo.svg";
+import Header from "./../MobileMenu/MobileMenu";
+import logo from "./../../assets/logo.svg";
 import styles from "./Sidebar.module.css";
 
 /**
