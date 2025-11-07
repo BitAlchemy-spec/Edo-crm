@@ -1,13 +1,58 @@
 <!doctype html>
-<html lang="en">
+<html lang="uk">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./src/assets/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EDO — електронний документообіг</title>
+
+    <!-- SEO базові -->
+    <meta name="description" content="EDO — сучасна система електронного документообігу для бізнесу. Підписуйте, зберігайте та обмінюйтесь документами онлайн швидко та безпечно." />
+    <meta name="keywords" content="електронний документообіг, EDO, підпис документів, документообіг онлайн, цифровий підпис, бізнес автоматизація" />
+    <meta name="author" content="EDO Team" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph (для Facebook, LinkedIn тощо) -->
+    <meta property="og:title" content="EDO — електронний документообіг" />
+    <meta property="og:description" content="Електронний документообіг нового покоління — зручний, безпечний, швидкий. Спробуйте EDO для свого бізнесу." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://edo.example.com/" />
+    <meta property="og:image" content="https://edo.example.com/assets/preview.jpg" />
+    <meta property="og:locale" content="uk_UA" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="EDO — електронний документообіг" />
+    <meta name="twitter:description" content="EDO — сучасна система для обміну документами онлайн з електронним підписом." />
+    <meta name="twitter:image" content="https://edo.example.com/assets/preview.jpg" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="./src/assets/logo.svg" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://edo.example.com/" />
+
+    <!-- Schema.org JSON-LD (структуровані дані) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "EDO — електронний документообіг",
+      "url": "https://edo.example.com/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Система електронного документообігу для бізнесу, що дозволяє створювати, підписувати та зберігати документи онлайн.",
+      "image": "https://edo.example.com/assets/preview.jpg",
+      "publisher": {
+        "@type": "Organization",
+        "name": "EDO Team",
+        "url": "https://edo.example.com/"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+
