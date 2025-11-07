@@ -41,3 +41,118 @@ body {
   display: grid;
   gap: 1rem;
 }
+
+
+/* Block: documents-table */
+.documents-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+  border-radius: 10px; 
+  overflow: hidden;
+  background-color: #ffffff;
+  color: #343a40; 
+}
+
+/* Element: documents-table__head */
+.documents-table__head {
+  background-color: #f0f2f5; 
+  border-bottom: 2px solid #e0e4eb; 
+}
+
+/* Element: documents-table__row */
+.documents-table__row {
+  transition: background-color 0.2s ease, transform 0.1s ease; 
+}
+
+.documents-table__row:nth-of-type(even) {
+  background-color: #fafafa; 
+}
+
+.documents-table__row:hover {
+  background-color: #e6f7ff; 
+  transform: translateY(-1px); 
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); 
+  z-index: 1; 
+  position: relative; 
+}
+
+/* Element: documents-table__header-cell */
+.documents-table__header-cell {
+  padding: 16px 24px; 
+  text-align: left;
+  font-weight: 700; 
+  color: #5a6673; 
+  font-size: 14px;
+  text-transform: uppercase; 
+  letter-spacing: 0.5px; 
+}
+
+/* Element: documents-table__cell */
+.documents-table__cell {
+  padding: 15px 24px; 
+  vertical-align: middle;
+  color: #495057; 
+  border-bottom: 1px solid #edf1f5; 
+}
+
+.documents-table__row:last-child .documents-table__cell {
+  border-bottom: none;
+}
+
+/* Element: documents-table__title */
+.documents-table__title {
+  font-size: 16px;
+  font-weight: 600; 
+  color: #2c3e50; 
+  line-height: 1.4; 
+}
+
+/* Element: documents-table__author */
+.documents-table__author {
+  font-size: 14px;
+  color: #7f8c8d; 
+  font-style: italic; 
+}
+
+/* Модификатор для выделенной строки */
+.documents-table__row--selected {
+  background-color: #d8f1ff !important; 
+  font-weight: 500;
+  box-shadow: 0 0 0 2px #90cdf4 inset; 
+  transform: none;
+}
+
+/* Элементы, связанные с колонкой скачивания */
+.documents-table__header-cell--download {
+  width: 90px; 
+  text-align: center;
+  padding-right: 24px; 
+}
+
+.documents-table__download-cell {
+  text-align: center;
+  padding: 12px 24px; 
+}
+
+/* Стили для ActionIcon (Mantine компонент) */
+.documents-table__download-cell .mantine-ActionIcon-root {
+  background-color: #f0f2f5; 
+  color: #495057; 
+  border-radius: 6px; 
+  width: 36px; 
+  height: 36px;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.documents-table__download-cell .mantine-ActionIcon-root:hover {
+  background-color: #e2f4ff; 
+  color: #228be6; 
+  transform: translateY(-1px); 
+}
+
+.documents-table__download-cell .mantine-ActionIcon-root:active {
+  transform: translateY(0); 
+}
+

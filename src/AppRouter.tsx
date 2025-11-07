@@ -1,12 +1,8 @@
-/**
- * Главный роутер приложения
- * Определяет все маршруты и оборачивает приложение в провайдеры
- */
 import type { ReactElement } from "react";
 import { MantineProvider } from "@mantine/core";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import './global.css';
 
-// Импорт компонентов страниц
 import Sidebar from "./components/Sidebar/Sidebar";
 import AuthForm from "./components/AuthForm/AuthForm";
 import External from "./components/External/External";
@@ -19,7 +15,8 @@ import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 /**
  * Конфигурация маршрутов приложения
  * Определяет структуру навигации и соответствующие компоненты
- */
+*/
+
 const routes = [
   // Главная страница - форма авторизации
   {
