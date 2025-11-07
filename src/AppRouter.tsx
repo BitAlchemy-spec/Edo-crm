@@ -13,7 +13,6 @@ import External from "./components/External/External";
 import Incoming from "./components/Incoming/Incoming";
 import Outgoing from "./components/Outgoing/Outgoing";
 import Internal from "./components/Internal/Internal";
-import Help from "./components/Help/Help";
 import NotFound from "./components/NotFound/NotFound";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 
@@ -36,7 +35,6 @@ const routes = [
       { path: "incoming", element: <Incoming/> },     // Вхідні документи
       { path: "outgoing", element: <Outgoing/> },     // Вихідні документи
       { path: "internal", element: <Internal/> },     // Внутрішні документи
-      { path: "help", element: <Help/> },             // Тарифи
     ],
   },
   // Catch-all маршрут для несуществующих страниц (404)

@@ -1,6 +1,5 @@
 import { Table, Text, Group, ActionIcon } from '@mantine/core';
 import { IconDownload } from '@tabler/icons-react'; // Импортируем иконку для скачивания
-import '../../shared/DocumentsTable.css';
 
 interface Document {
   id: string;

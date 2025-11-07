@@ -10,7 +10,6 @@ const MobileMenu = () => {
     { label: "Вхідні документи", path: "/incoming" },
     { label: "Вихідні документи", path: "/outgoing" },
     { label: "Внутрішні документи", path: "/internal" },
-    { label: "Тарифи", path: "/Help" },
   ];
 
   return (

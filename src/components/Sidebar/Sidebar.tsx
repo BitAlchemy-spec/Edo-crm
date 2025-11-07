@@ -29,7 +29,6 @@ const linksData = [
   { label: "Вхідні документи", icon: faFileImport, to: "incoming" },
   { label: "Вихідні документи", icon: faFileExport, to: "outgoing" },
   { label: "Внутрішні документи", icon: faFileAlt, to: "internal" },
-  { label: "Тарифи", icon: faMoneyBill, to: "help" },
 ];
 
 /**
