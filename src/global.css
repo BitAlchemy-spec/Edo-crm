@@ -1,116 +1,73 @@
-@font-face {
-  font-family: "Inter";
-  src: url("./assets/fonts/Inter-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("./assets/fonts/Inter-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("./assets/fonts/Inter-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+:root {
+  --font-main: "Inter", sans-serif;
+  --color-bg: #ffffff;
+  --color-border: #e3e5e8;
+  --color-border-light: #f1f3f5;
+  --color-text: #2f3640;
+  --color-text-muted: #7d8894;
+  --color-head: #4b5663;
+  --color-row-hover: #eef6ff;
+  --color-row-selected: #d8ecff;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: 0.18s ease;
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-main);
   background-color: #f8f9fa;
-  color: #212529;
+  color: var(--color-text);
   margin: 0;
-  padding: 0;
   overflow: hidden;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-.flex {
-  display: flex;
-  gap: 1rem;
-}
-
-.grid {
-  display: grid;
-  gap: 1rem;
-}
-
-/* ================================
-   ТАБЛИЦА ДОКУМЕНТОВ
-================================ */
-
+/* DESKTOP / 4K / laptop */
 .documents-table {
   width: 100%;
   border-collapse: collapse;
-  font-family: 'Inter', sans-serif;
-  background-color: #ffffff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  color: #343a40;
+  background: var(--color-bg);
+  border-radius: var(--radius);
+  color: var(--color-text);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
 }
 
-/* HEADER */
-
 .documents-table__head {
-  background-color: #f1f3f5;
-  border-bottom: 2px solid #dde2e7;
+  background-color: #f7f8fa;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .documents-table__header-cell {
-  padding: 20px 28px;
+  padding: 18px 26px;
   text-align: left;
-  font-weight: 700;
-  color: #4b5663;
+  font-weight: 600;
   font-size: 14px;
+  letter-spacing: 0.3px;
+  color: var(--color-head);
   text-transform: uppercase;
-  letter-spacing: 0.45px;
-  background: #f8f9fa;
+  background: #f9fafc;
 }
-
-/* ROWS */
 
 .documents-table__row {
-  transition: background-color 0.15s ease, transform 0.1s ease;
+  transition: background-color var(--transition);
 }
 
-.documents-table__row:nth-of-type(even) {
-  background-color: #fafbfc;
+.documents-table__row:nth-child(even) {
+  background-color: #fcfdfe;
 }
 
 .documents-table__row:hover {
-  background-color: #e8f4ff;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-  position: relative;
-  z-index: 1;
+  background-color: var(--color-row-hover);
 }
 
 .documents-table__row--selected {
-  background-color: #d8ecff !important;
+  background-color: var(--color-row-selected);
   box-shadow: inset 0 0 0 2px #74b4f0;
 }
 
-/* CELLS */
-
 .documents-table__cell {
-  padding: 18px 28px;
-  vertical-align: middle;
+  padding: 16px 26px;
+  border-bottom: 1px solid var(--color-border-light);
   font-size: 15px;
-  border-bottom: 1px solid #edf0f3;
-  color: #3c4854;
 }
 
 .documents-table__row:last-child .documents-table__cell {
@@ -120,45 +77,164 @@ body {
 .documents-table__title {
   font-size: 16px;
   font-weight: 600;
-  color: #2a3b4c;
 }
 
 .documents-table__author {
   font-size: 14px;
-  color: #7d8894;
+  color: var(--color-text-muted);
   font-style: italic;
 }
 
-/* DOWNLOAD COLUMN */
-
 .documents-table__header-cell--download {
-  width: 90px;
+  width: 80px;
   text-align: center;
-  padding-right: 26px;
 }
 
 .documents-table__download-cell {
   text-align: center;
-  padding: 14px 26px;
+  padding: 12px 20px;
 }
 
-/* Mantine ActionIcon STYLES */
-
 .documents-table__download-cell .mantine-ActionIcon-root {
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
   background-color: #eef1f4;
   color: #4b5663;
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  transition: var(--transition);
 }
 
 .documents-table__download-cell .mantine-ActionIcon-root:hover {
-  background-color: #d9ecff;
+  background-color: #d8ecff;
   color: #1f7ae0;
-  transform: translateY(-2px);
 }
 
 .documents-table__download-cell .mantine-ActionIcon-root:active {
-  transform: translateY(0);
+  transform: scale(0.95);
 }
+
+/* ============= TABLET (1024–768) ============= */
+
+@media (max-width: 1024px) {
+  .documents-table__header-cell {
+    padding: 16px 20px;
+    font-size: 13px;
+  }
+
+  .documents-table__cell {
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+
+  .documents-table__title {
+    font-size: 15px;
+  }
+}
+
+/* ============= SMALL TABLET / LARGE PHONE (768–600) ============= */
+
+@media (max-width: 768px) {
+  .documents-table {
+    border-radius: 10px;
+    box-shadow: none;
+  }
+
+  .documents-table__head {
+    display: none;
+  }
+
+  .documents-table,
+  .documents-table tbody,
+  .documents-table__row,
+  .documents-table__cell {
+    display: block;
+    width: 100%;
+  }
+
+  .documents-table__row {
+    background: #ffffff;
+    margin-bottom: 16px;
+    border: 1px solid #eceff2;
+    border-radius: var(--radius);
+    padding: 12px 16px;
+  }
+
+  .documents-table__cell {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed #edf0f2;
+  }
+
+  .documents-table__cell:last-child {
+    border-bottom: none;
+  }
+
+  .documents-table__cell::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #4b5663;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+
+  .documents-table__download-cell {
+    justify-content: center;
+  }
+}
+
+/* ============= PHONE (600–480) ============= */
+
+@media (max-width: 600px) {
+  .documents-table__row {
+    padding: 12px 14px;
+  }
+
+  .documents-table__cell {
+    padding: 8px 0;
+    font-size: 14px;
+  }
+
+  .documents-table__cell::before {
+    font-size: 14px;
+  }
+}
+
+/* ============= SMALL PHONE (480–360) ============= */
+
+@media (max-width: 480px) {
+  .documents-table__cell {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .documents-table__cell::before {
+    margin-bottom: 4px;
+  }
+
+  .documents-table__row {
+    padding: 14px;
+  }
+}
+
+/* ============= ULTRA SMALL (360–320) ============= */
+
+@media (max-width: 360px) {
+  .documents-table__row {
+    padding: 10px 12px;
+  }
+
+  .documents-table__cell::before {
+    font-size: 13px;
+  }
+
+  .documents-table__cell {
+    font-size: 13px;
+  }
+
+  .documents-table__download-cell .mantine-ActionIcon-root {
+    width: 32px;
+    height: 32px;
+  }
+}
+
