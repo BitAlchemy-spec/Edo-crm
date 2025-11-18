@@ -5,14 +5,13 @@ import {
   faEnvelope,
   faLock,
   faUser,
-  faTimes,
-  faEye,
-  faEyeSlash,
 } from '@fortawesome/free-solid-svg-icons';
-import styles from './AuthForm.module.css';
 import { useNavigate } from 'react-router-dom';
+
+import styles from './AuthForm.module.css';
 import logo from '../../assets/logo.svg';
 
+// === TYPES ===
 type RegisterFormInputs = {
   username: string;
   email: string;
@@ -28,38 +27,37 @@ type LoginFormInputs = {
 const AuthForm: React.FC = () => {
   const navigate = useNavigate();
 
+  // === UI STATES ===
   const [activeTab, setActiveTab] = useState<'register' | 'login'>('login');
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  // === Register form ===
+  // === REGISTER FORM ===
   const {
     register,
     handleSubmit,
     reset: resetRegister,
-    setValue: setRegisterValue,
     watch: watchRegister,
     formState: { errors: registerErrors },
   } = useForm<RegisterFormInputs>();
 
-  // === Login form ===
+  // === LOGIN FORM ===
   const {
     register: loginRegister,
     handleSubmit: handleLoginSubmit,
     reset: resetLogin,
-    setValue: setLoginValue,
     watch: watchLogin,
     formState: { errors: loginErrors },
   } = useForm<LoginFormInputs>();
 
-  // watchers
+  // === WATCHERS ===
   const registerEmail = watchRegister('email', '');
-  const loginEmail = watchLogin('email', '');
-  const loginPassword = watchLogin('password', '');
   const registerUsername = watchRegister('username', '');
   const registerPassword = watchRegister('password', '');
   const registerConfirmPassword = watchRegister('confirmPassword', '');
 
+  const loginEmail = watchLogin('email', '');
+  const loginPassword = watchLogin('password', '');
+
+  // === HANDLERS ===
   const onRegister = (data: RegisterFormInputs) => {
     console.log('Регистрация:', data);
     resetRegister();
@@ -67,18 +65,16 @@ const AuthForm: React.FC = () => {
 
   const onLogin = (data: LoginFormInputs) => {
     console.log('Вход:', data);
-    const loginSuccess = true;
-    if (loginSuccess) {
-      resetLogin();
-      navigate('/external');
-    }
+    navigate('/external');
+    resetLogin();
   };
 
   return (
     <div className={styles.authWrapper}>
       <div className={styles.auth}>
         <div className={styles.auth__card}>
-         {/* === ЛОГО === */}
+          
+          {/* === LOGO === */}
           <div className={styles.logoContainer}>
             <img src={logo} alt="Logo" className={styles.logo} />
             <div className={styles.logoText}>
@@ -86,7 +82,8 @@ const AuthForm: React.FC = () => {
               <p className={styles.brandDesc}>Електронний документообіг</p>
             </div>
           </div>
-          {/* === ТАБЫ === */}
+
+          {/* === TABS === */}
           <div className={styles.tabs}>
             <button
               className={`${styles.tab} ${activeTab === 'register' ? styles.active : ''}`}
@@ -94,6 +91,7 @@ const AuthForm: React.FC = () => {
             >
               Регистрация
             </button>
+
             <button
               className={`${styles.tab} ${activeTab === 'login' ? styles.active : ''}`}
               onClick={() => setActiveTab('login')}
@@ -105,11 +103,14 @@ const AuthForm: React.FC = () => {
           {/* === REGISTER FORM === */}
           {activeTab === 'register' && (
             <form className={styles.form} onSubmit={handleSubmit(onRegister)}>
+              
+              {/* Username */}
               <div className={styles.form__group}>
                 <label className={styles.form__label}>
                   <FontAwesomeIcon icon={faUser} className={styles.labelIcon} />
                   Имя пользователя:
                 </label>
+
                 <div className={styles.inputWrapper}>
                   <input
                     type="text"
@@ -117,24 +118,20 @@ const AuthForm: React.FC = () => {
                     placeholder="Введите имя:"
                     {...register('username', { required: 'Введите имя пользователя:' })}
                   />
-                  <FontAwesomeIcon
-                    icon={faTimes}
-                    className={`${styles.clearIcon} ${
-                      registerUsername ? styles.visible : styles.hidden
-                    }`}
-                    onClick={() => setRegisterValue('username', '')}
-                  />
                 </div>
+
                 {registerErrors.username && (
                   <p className={styles.form__error}>{registerErrors.username.message}</p>
                 )}
               </div>
 
+              {/* Email */}
               <div className={styles.form__group}>
                 <label className={styles.form__label}>
                   <FontAwesomeIcon icon={faEnvelope} className={styles.labelIcon} />
                   Email:
                 </label>
+
                 <div className={styles.inputWrapper}>
                   <input
                     type="email"
@@ -148,84 +145,57 @@ const AuthForm: React.FC = () => {
                       },
                     })}
                   />
-                  <FontAwesomeIcon
-                    icon={faTimes}
-                    className={`${styles.clearIcon} ${
-                      registerEmail ? styles.visible : styles.hidden
-                    }`}
-                    onClick={() => setRegisterValue('email', '')}
-                  />
                 </div>
+
                 {registerErrors.email && (
                   <p className={styles.form__error}>{registerErrors.email.message}</p>
                 )}
               </div>
 
+              {/* Password */}
               <div className={styles.form__group}>
                 <label className={styles.form__label}>
                   <FontAwesomeIcon icon={faLock} className={styles.labelIcon} />
                   Пароль:
                 </label>
+
                 <div className={styles.inputWrapper}>
                   <input
-                    type={showPassword ? 'text' : 'password'}
+                    type="password"
                     className={styles.form__input}
                     placeholder="Введите пароль:"
                     {...register('password', {
                       required: 'Введите пароль',
-                      minLength: {
-                        value: 6,
-                        message: 'Пароль должен быть не менее 6 символов',
-                      },
+                      minLength: { value: 6, message: 'Пароль должен быть не менее 6 символов' },
                     })}
                   />
-                  <FontAwesomeIcon
-                    icon={faTimes}
-                    className={`${styles.clearIcon} ${
-                      registerPassword ? styles.visible : styles.hidden
-                    }`}
-                    onClick={() => setRegisterValue('password', '')}
-                  />
-                  <FontAwesomeIcon
-                    icon={showPassword ? faEyeSlash : faEye}
-                    className={styles.togglePasswordIcon}
-                    onClick={() => setShowPassword((prev) => !prev)}
-                  />
                 </div>
+
                 {registerErrors.password && (
                   <p className={styles.form__error}>{registerErrors.password.message}</p>
                 )}
               </div>
 
+              {/* Confirm Password */}
               <div className={styles.form__group}>
                 <label className={styles.form__label}>
                   <FontAwesomeIcon icon={faLock} className={styles.labelIcon} />
                   Повторите пароль:
                 </label>
+
                 <div className={styles.inputWrapper}>
                   <input
-                    type={showConfirmPassword ? 'text' : 'password'}
+                    type="password"
                     className={styles.form__input}
                     placeholder="Повторите пароль:"
                     {...register('confirmPassword', {
-                      required: 'Пожалуйста, подтвердите пароль',
+                      required: 'Подтвердите пароль',
                       validate: (value) =>
-                        value === watchRegister('password') || 'Пароли не совпадают',
+                        value === registerPassword || 'Пароли не совпадают',
                     })}
                   />
-                  <FontAwesomeIcon
-                    icon={faTimes}
-                    className={`${styles.clearIcon} ${
-                      registerConfirmPassword ? styles.visible : styles.hidden
-                    }`}
-                    onClick={() => setRegisterValue('confirmPassword', '')}
-                  />
-                  <FontAwesomeIcon
-                    icon={showConfirmPassword ? faEyeSlash : faEye}
-                    className={styles.togglePasswordIcon}
-                    onClick={() => setShowConfirmPassword((prev) => !prev)}
-                  />
                 </div>
+
                 {registerErrors.confirmPassword && (
                   <p className={styles.form__error}>{registerErrors.confirmPassword.message}</p>
                 )}
@@ -240,11 +210,14 @@ const AuthForm: React.FC = () => {
           {/* === LOGIN FORM === */}
           {activeTab === 'login' && (
             <form className={styles.form} onSubmit={handleLoginSubmit(onLogin)}>
+              
+              {/* Email */}
               <div className={styles.form__group}>
                 <label className={styles.form__label}>
                   <FontAwesomeIcon icon={faEnvelope} className={styles.labelIcon} />
                   Email
                 </label>
+
                 <div className={styles.inputWrapper}>
                   <input
                     type="email"
@@ -258,50 +231,32 @@ const AuthForm: React.FC = () => {
                       },
                     })}
                   />
-                  <FontAwesomeIcon
-                    icon={faTimes}
-                    className={`${styles.clearIcon} ${
-                      loginEmail ? styles.visible : styles.hidden
-                    }`}
-                    onClick={() => setLoginValue('email', '')}
-                  />
                 </div>
+
                 {loginErrors.email && (
                   <p className={styles.form__error}>{loginErrors.email.message}</p>
                 )}
               </div>
 
+              {/* Password */}
               <div className={styles.form__group}>
                 <label className={styles.form__label}>
                   <FontAwesomeIcon icon={faLock} className={styles.labelIcon} />
                   Пароль
                 </label>
+
                 <div className={styles.inputWrapper}>
                   <input
-                    type={showPassword ? 'text' : 'password'}
+                    type="password"
                     className={styles.form__input}
                     placeholder="Введите пароль:"
                     {...loginRegister('password', {
                       required: 'Введите пароль',
-                      minLength: {
-                        value: 6,
-                        message: 'Пароль должен быть не менее 6 символов',
-                      },
+                      minLength: { value: 6, message: 'Пароль должен быть не менее 6 символов' },
                     })}
                   />
-                  <FontAwesomeIcon
-                    icon={faTimes}
-                    className={`${styles.clearIcon} ${
-                      loginPassword ? styles.visible : styles.hidden
-                    }`}
-                    onClick={() => setLoginValue('password', '')}
-                  />
-                  <FontAwesomeIcon
-                    icon={showPassword ? faEyeSlash : faEye}
-                    className={styles.togglePasswordIcon}
-                    onClick={() => setShowPassword((prev) => !prev)}
-                  />
                 </div>
+
                 {loginErrors.password && (
                   <p className={styles.form__error}>{loginErrors.password.message}</p>
                 )}
@@ -312,6 +267,7 @@ const AuthForm: React.FC = () => {
               </button>
             </form>
           )}
+
         </div>
       </div>
     </div>

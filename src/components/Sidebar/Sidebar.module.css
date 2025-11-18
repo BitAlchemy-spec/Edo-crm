@@ -1,70 +1,80 @@
+/* =========================================
+   LAYOUT
+========================================= */
 .layout {
   display: flex;
   flex-direction: row;
   height: 100vh;
   font-family: "Inter", sans-serif;
+  background: #f5f7fa;
 }
 
-/* === Сайдбар === */
+/* =========================================
+   SIDEBAR / NAVBAR
+========================================= */
 .navbar {
   display: flex;
   flex-direction: column;
   width: 300px;
-  height: 100vh;
-  background-color: #ffffff;
+  background: #ffffff;
   border-right: 1px solid rgba(0, 0, 0, 0.06);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.05);
+  transition: transform 0.35s ease, width 0.35s ease;
   position: relative;
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  z-index: 20;
 }
 
+/* Wrapper */
 .wrapper {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-/* === Логотип и текст === */
+/* =========================================
+   LOGO BLOCK
+========================================= */
 .logoContainer {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 1rem;
+  gap: 12px;
+  padding: 1.1rem 1.3rem;
   transition: all 0.3s ease;
 }
 
 .logo {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   object-fit: contain;
-  flex-shrink: 0;
 }
 
 .logoText {
   display: flex;
   flex-direction: column;
-  line-height: 1.1;
-  overflow: hidden;
+  line-height: 1.15;
   white-space: nowrap;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .logoText h2 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.22rem;
+  font-weight: 700;
   color: #111827;
 }
 
 .logoText p {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: #6b7280;
 }
 
-/* === Основные ссылки === */
+/* =========================================
+   NAV LINKS
+========================================= */
 .main {
   flex: 1;
-  padding: 20px;
+  padding: 20px 14px;
   overflow-y: auto;
 }
 
@@ -72,13 +82,13 @@
   display: flex;
   align-items: center;
   padding: 12px 16px;
+  margin-bottom: 6px;
   border-radius: 12px;
   text-decoration: none;
-  color: #4b5563;
   font-size: 14px;
   font-weight: 500;
-  margin-bottom: 4px;
-  transition: all 0.2s ease-in-out;
+  color: #4b5563;
+  transition: all 0.25s ease;
 }
 
 .icon {
@@ -89,51 +99,41 @@
 }
 
 .link:hover {
-  background: #f8fafc;
-  color: #2563eb;
+  background: #eef3ff;
+  color: #1d4ed8;
   transform: translateX(4px);
 }
 
 .link:hover .icon {
-  color: #2563eb;
+  color: #1d4ed8;
 }
 
 .active {
-  background: #eff6ff;
+  background: #e8efff;
   color: #2563eb;
   font-weight: 600;
-  position: relative;
 }
 
-.active::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 3px;
-  height: 20px;
-  background: #2563eb;
-  border-radius: 0 4px 4px 0;
-}
-
-/* === Кнопка сворачивания === */
+/* =========================================
+   COLLAPSE BUTTON
+========================================= */
 .collapseBtn {
   position: absolute;
   right: -12px;
   top: 50%;
   transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  background: white;
   cursor: pointer;
+  background: white;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
   transition: all 0.2s ease;
+  z-index: 30;
 }
 
 .collapseBtn:hover {
@@ -143,17 +143,18 @@
 
 .collapseIcon {
   transition: transform 0.3s ease;
-  font-size: 5px;
+  font-size: 6px;
 }
 
-/* === Состояние свёрнуто === */
+/* =========================================
+   COLLAPSED (DESKTOP)
+========================================= */
 .collapsed {
-  width: 80px;
+  width: 84px;
 }
 
 .collapsed .logoContainer {
   justify-content: center;
-  padding: 1rem 0.5rem;
 }
 
 .collapsed .logoText {
@@ -161,64 +162,89 @@
   transform: translateX(-10px);
   pointer-events: none;
   width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.collapsed .main span {
-  display: none;
 }
 
 .collapsed .main {
-  padding: 20px 0;
+  padding: 18px 6px;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
 }
 
 .collapsed .link {
   justify-content: center;
   padding: 12px;
-  margin-bottom: 8px;
 }
 
-/* === Контентная часть === */
+.collapsed .link span {
+  display: none !important;
+}
+
+.collapsed .icon {
+  margin-right: 0;
+}
+
+/* =========================================
+   CONTENT AREA
+========================================= */
 .content {
   flex: 1;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .contentWrapper {
-  padding: 24px;
+  padding: 28px;
   flex: 1;
   background: #fafafa;
+  overflow-y: auto;
 }
 
-/* === Адаптивность === */
+/* =========================================
+   MOBILE — SIDEBAR HIDDEN
+========================================= */
+
 @media (max-width: 768px) {
+
   .navbar {
     position: fixed;
     top: 0;
     left: 0;
-    width: 280px;
-    height: 100%;
-    z-index: 1000;
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
-    transform: translateX(-100%);
+    height: 100vh;
+
+    transform: translateX(-100%); /* скрыт по умолчанию */
+    width: 260px;
+
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
   }
 
-  .wrapper {
-    flex-direction: column;
-  }
-
-  .main {
-    padding: 16px;
+  .navbar.open {
+    transform: translateX(0); /* открытие меню */
   }
 
   .content {
-    margin-left: 0;
-    padding-top: 70px;
+    margin-left: 0 !important;
   }
+
+  .collapseBtn {
+    display: none; /* на мобильных collapse не нужен */
+  }
+}
+
+/* =========================================
+   MOBILE OVERLAY (optional, but recommended)
+========================================= */
+
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 15;
+}
+
+.mobile-overlay.open {
+  display: block;
 }
 

@@ -1,259 +1,253 @@
-/* Общий контейнер таблицы */
 .documents-table__wrapper {
     width: 100%;
-    overflow-x: auto; /* Сохраняем горизонтальный скролл для больших таблиц */
-    border-radius: 12px; /* Чуть более выраженное скругление */
-    background: #ffffff; /* Чистый белый фон */
-    padding: 1.5rem; /* Немного больше внутреннего отступа */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Более заметная, но мягкая тень */
-    font-family: 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* Современный стек шрифтов */
-    color: #333; /* Основной цвет текста */
-}
-
-/* Заголовок таблицы */
-.documents-table__header {
+    overflow-x: auto;
+    border-radius: 12px;
+    background: #fff;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    font-family: 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: #333;
+  }
+  
+  .documents-table__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1.5rem; /* Отступ от заголовка до содержимого */
-    flex-wrap: wrap; /* Для лучшей адаптации на небольших экранах */
-    gap: 1rem; /* Пространство между элементами заголовка */
-}
-
-.documents-table__title {
-    font-weight: 700; /* Более жирный шрифт для заголовка */
-    font-size: 1.8rem; /* Увеличенный размер заголовка */
-    color: #2c3e50; /* Темно-серый цвет для контраста */
-}
-
-/* Контейнер поиска */
-.documents-table__search {
-    width: 300px; /* Увеличим ширину поля поиска */
-    max-width: 100%; /* Гарантируем адаптивность */
-    transition: all 0.3s ease; /* Плавный переход */
-}
-
-.documents-table__search input {
-    width: 100%; /* Занимает всю доступную ширину контейнера */
-    padding: 0.8rem 1.2rem; /* Увеличенный padding */
-    border-radius: 8px; /* Скругленные углы для поля поиска */
-    background: #f0f2f5; /* Светлый фон для инпута */
-    border: 1px solid #e0e4e8; /* Мягкая граница */
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .documents-table__title {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #2c3e50;
+  }
+  
+  .documents-table__search {
+    width: 300px;
+    max-width: 100%;
+    transition: 0.3s ease;
+  }
+  
+  .documents-table__search input {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    background: #f0f2f5;
+    border: 1px solid #e0e4e8;
     font-size: 1rem;
     color: #333;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    outline: none; /* Убираем стандартный outline */
-    -webkit-appearance: none; /* Сброс стандартных стилей */
-    -moz-appearance: none;
+    transition: 0.3s ease;
+    outline: none;
     appearance: none;
-}
-
-.documents-table__search input::placeholder {
-    color: #99aab5; /* Мягкий цвет плейсхолдера */
-}
-
-.documents-table__search input:focus {
-    border-color: #4a90e2; /* Яркая граница при фокусе */
-    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2); /* Легкая тень при фокусе */
-    background-color: #ffffff; /* Белый фон при фокусе */
-}
-
-/* Стили для самой таблицы */
-.documents-table {
+  }
+  
+  .documents-table__search input::placeholder {
+    color: #99aab5;
+  }
+  
+  .documents-table__search input:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+    background-color: #fff;
+  }
+  
+  .documents-table {
     width: 100%;
-    border-collapse: collapse; /* Убираем двойные границы */
+    border-collapse: collapse;
     margin-top: 1rem;
-}
-
-.documents-table__head {
-    background-color: #f8f9fa; /* Светлый фон для заголовка таблицы */
-}
-
-.documents-table__th {
-    font-weight: 600;
+  }
+  
+  .documents-table__head {
+    background-color: #f8f9fa;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+  }
+  
+  .documents-table__th {
+    font-weight: 700;
+    letter-spacing: 0.3px;
     user-select: none;
-    text-align: left; /* Выравнивание заголовков по левому краю */
-    padding: 1rem 1.5rem; /* Увеличенный padding для заголовков */
-    color: #555; /* Цвет текста заголовков */
-    border-bottom: 2px solid #e9ecef; /* Отделяющая линия */
-    cursor: pointer; /* Указываем, что заголовки могут быть кликабельными (для сортировки) */
+    text-align: left;
+  
+    padding: 1.35rem 2rem; 
+  
+    color: #424b57;
+    background: #f9fafc;
+  
+    border-bottom: 2px solid #e3e6eb;
+  
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+  
+  .documents-table__th:hover {
+    background-color: #eef1f5;
+    color: #1a2530;
+  }
+  
+  .documents-table__th:hover {
+    background-color: #e2e6ea;
+  }
+  
+  .documents-table__row {
+    border-bottom: 1px solid #e9ecef;
     transition: background-color 0.2s ease;
-}
-
-.documents-table__th:hover {
-    background-color: #e2e6ea; /* Изменение фона при наведении на заголовок */
-}
-
-.documents-table__row {
-    border-bottom: 1px solid #e9ecef; /* Разделитель между строками */
-    transition: background-color 0.2s ease;
-}
-
-.documents-table__row:last-child {
-    border-bottom: none; /* Убираем границу у последней строки */
-}
-
-.documents-table__row:hover {
-    background-color: #f5f9fc; /* Подсветка строки при наведении */
-}
-
-.documents-table__cell {
+  }
+  
+  .documents-table__row:last-child {
+    border-bottom: none;
+  }
+  
+  .documents-table__row:hover {
+    background-color: #f5f9fc;
+  }
+  
+  .documents-table__cell {
     vertical-align: middle;
-    padding: 0.9rem 1.5rem; /* Увеличенный padding для ячеек */
-    color: #444; /* Цвет текста ячеек */
+    padding: 0.9rem 1.5rem;
+    color: #444;
     font-size: 0.95rem;
-}
-
-.documents-table__author {
-    color: #777; /* Более мягкий цвет для автора */
+  }
+  
+  .documents-table__author {
+    color: #777;
     font-size: 0.85rem;
-}
-
-.documents-table__download-cell {
+  }
+  
+  .documents-table__download-cell {
     text-align: center;
-    /* Если есть кнопка или иконка, можно центрировать ее */
-}
-
-/* Стили для кнопок/иконок скачивания, если они есть */
-.documents-table__download-btn {
+  }
+  
+  .documents-table__download-btn {
     background: none;
     border: none;
-    color: #4a90e2; /* Цвет иконки/текста */
+    color: #4a90e2;
     cursor: pointer;
     font-size: 1.2rem;
-    transition: color 0.2s ease;
-}
-
-.documents-table__download-btn:hover {
+    transition: 0.2s ease;
+  }
+  
+  .documents-table__download-btn:hover {
     color: #2f7ad9;
-}
-
-
-/* Мобильная адаптация */
-@media (max-width: 768px) {
+  }
+  
+  @media (max-width: 768px) {
     .documents-table__wrapper {
-        box-shadow: none; 
-        padding: 0.75rem; 
-        border-radius: 0; 
+      box-shadow: none;
+      padding: 0.75rem;
+      border-radius: 0;
     }
-
+  
     .documents-table__header {
-        flex-direction: column; 
-        align-items: flex-start;
-        margin-bottom: 1rem;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 1rem;
     }
-
+  
     .documents-table__title {
-        font-size: 1.5rem; 
+      font-size: 1.5rem;
     }
-
+  
     .documents-table__search {
-        width: 100%;
+      width: 100%;
     }
-
+  
     .documents-table__head {
-        display: none; 
+      display: none;
     }
-
+  
     .documents-table,
     .documents-table tbody,
     .documents-table tr,
     .documents-table td {
-        display: block; 
-        width: 100%;
+      display: block;
+      width: 100%;
     }
-
+  
     .documents-table__row {
-        margin-bottom: 1rem; 
-        border: 1px solid #e9ecef; 
-        border-radius: 8px; 
-        padding: 0.75rem;
-        background-color: #ffffff;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); 
-        display: flex;
-        flex-direction: column;
+      margin-bottom: 1rem;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 0.75rem;
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
     }
-
-    .documents-table__row:last-child {
-        margin-bottom: 0;
-    }
-
+  
     .documents-table__cell {
-        display: flex;
-        justify-content: space-between; 
-        align-items: center;
-        padding: 0.5rem 0.25rem; 
-        border-bottom: 1px dashed #f0f2f5; 
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0.25rem;
+      border-bottom: 1px dashed #f0f2f5;
     }
-
+  
     .documents-table__cell:last-child {
-        border-bottom: none;
+      border-bottom: none;
     }
-
-    /* Добавим псевдоэлементы для отображения заголовков колонок */
+  
     .documents-table__cell::before {
-        content: attr(data-label); 
-        font-weight: 600;
-        color: #555;
-        margin-right: 0.5rem;
-        min-width: 80px; 
+      content: attr(data-label);
+      font-weight: 600;
+      color: #555;
+      margin-right: 0.5rem;
+      min-width: 80px;
     }
-
-}
-
-/* Более тонкая настройка для очень маленьких экранов (смартфонов) */
-@media (max-width: 480px) {
+  }
+  
+  @media (max-width: 480px) {
     .documents-table__title {
-        font-size: 1.3rem;
+      font-size: 1.3rem;
     }
+  
     .documents-table__cell {
-        flex-direction: column; 
-        align-items: flex-start;
+      flex-direction: column;
+      align-items: flex-start;
     }
+  
     .documents-table__cell::before {
-        margin-bottom: 0.25rem;
+      margin-bottom: 0.25rem;
     }
-}
-
-input {
+  }
+  
+  input {
     width: 200px;
     max-width: 100%;
     padding: 12px 15px;
     margin-bottom: 20px;
     border-radius: 8px;
     outline: none;
-    border: 1px solid #dcdcdc; /* Более мягкий цвет границы */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Легкая тень для глубины */
-    transition: all 0.3s ease; /* Плавный переход для состояний фокуса */
-    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* Более современный шрифт */
-    font-size: 16px; /* Увеличенный размер шрифта для лучшей читаемости */
-    color: #333; /* Темный текст для контраста */
-    -webkit-appearance: none; /* Сброс стандартных стилей для iOS */
-    -moz-appearance: none; /* Сброс стандартных стилей для Firefox */
-    appearance: none; /* Сброс стандартных стилей */
-}
-
-input:focus {
-    border-color: #007bff; 
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); 
-}
-
-input::placeholder {
-    color: #999; 
-    opacity: 1; 
-}
-
-/* Стили для инпутов в состоянии disabled */
-input:disabled {
+    border: 1px solid #dcdcdc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: 0.3s ease;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+    appearance: none;
+  }
+  
+  input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  }
+  
+  input::placeholder {
+    color: #999;
+    opacity: 1;
+  }
+  
+  input:disabled {
     background-color: #f5f5f5;
     border-color: #e1e1e1;
     color: #999;
     cursor: not-allowed;
-}
-
-/* Пример стилей для инпутов с ошибкой (можно добавить класс .input-error) */
-input.input-error {
-    border-color: #dc3545; 
+  }
+  
+  input.input-error {
+    border-color: #dc3545;
     box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25);
-}
-
+  }  
+  

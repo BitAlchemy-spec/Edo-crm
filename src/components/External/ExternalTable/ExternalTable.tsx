@@ -12,30 +12,24 @@ interface DocumentItem {
 const documentsData: DocumentItem[] = [
   {
     id: 'doc-1',
-    title: 'Proposal Q3',
-    author: 'Alice Johnson',
-    downloadLink: '/documents/proposal_q3.pdf',
-  },
-  {
-    id: 'doc-2',
     title: 'Meeting Minutes',
     author: 'Bob Williams',
     downloadLink: '/documents/meeting_minutes.docx',
   },
   {
-    id: 'doc-3',
+    id: 'doc-2',
     title: 'Financial Report July',
     author: 'Charlie Brown',
     downloadLink: '/documents/financial_report_july.xlsx',
   },
   {
-    id: 'doc-4',
+    id: 'doc-3',
     title: 'Marketing Strategy',
     author: 'Diana Prince',
     downloadLink: '/documents/marketing_strategy.pdf',
   },
   {
-    id: 'doc-5',
+    id: 'doc-4',
     title: 'HR Policy Updates',
     author: 'Eve Adams',
     downloadLink: '/documents/hr_policy_updates.pdf',
