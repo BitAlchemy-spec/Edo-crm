@@ -1,15 +1,18 @@
+/*
+  Компонент: AuthForm
+  Описание: Форма аутентификации и регистрации. Содержит вкладки "Регистрация" и "Вход", валидацию полей и навигацию после успешного входа.
+  Props: не принимает внешних пропсов; использует `react-hook-form` для управления формами.
+  Экспорт: дефолтный экспорт — компонент `AuthForm`.
+*/
+
+import { faEnvelope, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faEnvelope,
-  faLock,
-  faUser,
-} from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
-import styles from './AuthForm.module.css';
 import logo from '../../assets/logo.svg';
+import styles from './AuthForm.module.css';
 
 // === TYPES ===
 type RegisterFormInputs = {
@@ -44,18 +47,11 @@ const AuthForm: React.FC = () => {
     register: loginRegister,
     handleSubmit: handleLoginSubmit,
     reset: resetLogin,
-    watch: watchLogin,
     formState: { errors: loginErrors },
   } = useForm<LoginFormInputs>();
 
   // === WATCHERS ===
-  const registerEmail = watchRegister('email', '');
-  const registerUsername = watchRegister('username', '');
   const registerPassword = watchRegister('password', '');
-  const registerConfirmPassword = watchRegister('confirmPassword', '');
-
-  const loginEmail = watchLogin('email', '');
-  const loginPassword = watchLogin('password', '');
 
   // === HANDLERS ===
   const onRegister = (data: RegisterFormInputs) => {
@@ -73,7 +69,6 @@ const AuthForm: React.FC = () => {
     <div className={styles.authWrapper}>
       <div className={styles.auth}>
         <div className={styles.auth__card}>
-          
           {/* === LOGO === */}
           <div className={styles.logoContainer}>
             <img src={logo} alt="Logo" className={styles.logo} />
@@ -103,7 +98,6 @@ const AuthForm: React.FC = () => {
           {/* === REGISTER FORM === */}
           {activeTab === 'register' && (
             <form className={styles.form} onSubmit={handleSubmit(onRegister)}>
-              
               {/* Username */}
               <div className={styles.form__group}>
                 <label className={styles.form__label}>
@@ -138,7 +132,7 @@ const AuthForm: React.FC = () => {
                     className={styles.form__input}
                     placeholder="Введите email"
                     {...register('email', {
-                      required: 'Введите email:',
+                      required: 'Введите email',
                       pattern: {
                         value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
                         message: 'Некорректный формат email',
@@ -166,7 +160,10 @@ const AuthForm: React.FC = () => {
                     placeholder="Введите пароль:"
                     {...register('password', {
                       required: 'Введите пароль',
-                      minLength: { value: 6, message: 'Пароль должен быть не менее 6 символов' },
+                      minLength: {
+                        value: 6,
+                        message: 'Пароль должен быть не менее 6 символов',
+                      },
                     })}
                   />
                 </div>
@@ -197,7 +194,9 @@ const AuthForm: React.FC = () => {
                 </div>
 
                 {registerErrors.confirmPassword && (
-                  <p className={styles.form__error}>{registerErrors.confirmPassword.message}</p>
+                  <p className={styles.form__error}>
+                    {registerErrors.confirmPassword.message}
+                  </p>
                 )}
               </div>
 
@@ -210,7 +209,6 @@ const AuthForm: React.FC = () => {
           {/* === LOGIN FORM === */}
           {activeTab === 'login' && (
             <form className={styles.form} onSubmit={handleLoginSubmit(onLogin)}>
-              
               {/* Email */}
               <div className={styles.form__group}>
                 <label className={styles.form__label}>
@@ -252,7 +250,10 @@ const AuthForm: React.FC = () => {
                     placeholder="Введите пароль:"
                     {...loginRegister('password', {
                       required: 'Введите пароль',
-                      minLength: { value: 6, message: 'Пароль должен быть не менее 6 символов' },
+                      minLength: {
+                        value: 6,
+                        message: 'Пароль должен быть не менее 6 символов',
+                      },
                     })}
                   />
                 </div>
@@ -267,7 +268,6 @@ const AuthForm: React.FC = () => {
               </button>
             </form>
           )}
-
         </div>
       </div>
     </div>
@@ -275,4 +275,3 @@ const AuthForm: React.FC = () => {
 };
 
 export default AuthForm;
-

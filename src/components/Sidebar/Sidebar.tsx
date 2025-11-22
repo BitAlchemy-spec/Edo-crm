@@ -1,33 +1,40 @@
+/*
+  Компонент: Sidebar
+  Описание: Боковая панель навигации приложения. Содержит ссылки на разделы (Вхідні, Вихідні и т.д.).
+  Props: не принимает пропсы — использует внутренние маршруты и состояния приложения.
+  Экспорт: именованный/дефолтный (по коду ниже).
+*/
+
 /**
  * Компонент боковой панели навигации
  * Предоставляет основную навигацию по разделам приложения
  */
-import { useState } from "react";
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faFileImport,
-  faFileExport,
-  faFileAlt,
-  faFileSignature,
   faChevronLeft,
   faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
-import { Tooltip, UnstyledButton } from "@mantine/core";
+  faFileAlt,
+  faFileExport,
+  faFileImport,
+  faFileSignature,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Tooltip, UnstyledButton } from '@mantine/core';
+import { useState } from 'react';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 
-import Header from "./../MobileMenu/MobileMenu";
-import logo from "./../../assets/logo.svg";
-import styles from "./Sidebar.module.css";
+import logo from './../../assets/logo.svg';
+import Header from './../MobileMenu/MobileMenu';
+import styles from './Sidebar.module.css';
 
 /**
  * Конфигурация пунктов навигации
  * Определяет структуру меню с иконками и маршрутами
  */
 const linksData = [
-  { label: "Зовнішні документи", icon: faFileSignature, to: "external" },
-  { label: "Вхідні документи", icon: faFileImport, to: "incoming" },
-  { label: "Вихідні документи", icon: faFileExport, to: "outgoing" },
-  { label: "Внутрішні документи", icon: faFileAlt, to: "internal" },
+  { label: 'Зовнішні документи', icon: faFileSignature, to: 'external' },
+  { label: 'Вхідні документи', icon: faFileImport, to: 'incoming' },
+  { label: 'Вихідні документи', icon: faFileExport, to: 'outgoing' },
+  { label: 'Внутрішні документи', icon: faFileAlt, to: 'internal' },
 ];
 
 /**
@@ -41,9 +48,7 @@ function Sidebar() {
   // Генерация ссылок навигации на основе конфигурации
   const links = linksData.map((link) => (
     <NavLink
-      className={({ isActive }) =>
-        `${styles.link} ${isActive ? styles.active : ""}`
-      }
+      className={({ isActive }) => `${styles.link} ${isActive ? styles.active : ''}`}
       to={link.to}
       key={link.label}
     >
@@ -55,10 +60,10 @@ function Sidebar() {
   return (
     <div className={styles.layout}>
       {/* Боковая панель навигации */}
-      <nav className={`${styles.navbar} ${isCollapsed ? styles.collapsed : ""}`}>
+      <nav className={`${styles.navbar} ${isCollapsed ? styles.collapsed : ''}`}>
         {/* Кнопка сворачивания/разворачивания */}
         <Tooltip
-          label={isCollapsed ? "Розгорнути" : "Згорнути"}
+          label={isCollapsed ? 'Розгорнути' : 'Згорнути'}
           position="right"
           withArrow
         >
@@ -77,8 +82,8 @@ function Sidebar() {
           {/* Логотип и название приложения */}
           <div
             className={styles.logoContainer}
-            onClick={() => navigate("/")} // ✅ Клик ведет на главную страницу
-            style={{ cursor: "pointer" }} // Добавляем визуальный эффект
+            onClick={() => navigate('/')} // ✅ Клик ведет на главную страницу
+            style={{ cursor: 'pointer' }} // Добавляем визуальный эффект
           >
             <img src={logo} alt="Logo" className={styles.logo} />
             <div className={styles.logoText}>
@@ -105,4 +110,3 @@ function Sidebar() {
 }
 
 export default Sidebar;
-

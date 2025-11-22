@@ -1,6 +1,13 @@
-import { useState } from 'react';
-import { Table, Text, ActionIcon, TextInput, Group } from '@mantine/core';
+/*
+  Компонент: ExternalTable
+  Описание: Таблица для списка внешних документов. Использует UI-компоненты Mantine и классы `documents-table*` для единообразного отображения.
+  Props: не принимает внешних пропсов — данные заданы в файле для демонстрации.
+  Экспорт: дефолтный/именованный экспорт `ExternalTable`.
+*/
+
+import { ActionIcon, Group, Table, Text, TextInput } from '@mantine/core';
 import { IconDownload } from '@tabler/icons-react';
+import { useState } from 'react';
 
 interface DocumentItem {
   id: string;
@@ -42,7 +49,7 @@ export const ExternalTable: React.FC = () => {
   const filteredDocs = documentsData.filter(
     (doc) =>
       doc.title.toLowerCase().includes(search.toLowerCase()) ||
-      doc.author.toLowerCase().includes(search.toLowerCase())
+      doc.author.toLowerCase().includes(search.toLowerCase()),
   );
 
   const rows = filteredDocs.map((item) => (
@@ -55,7 +62,10 @@ export const ExternalTable: React.FC = () => {
         <Text c="dimmed">{item.author}</Text>
       </Table.Td>
 
-      <Table.Td className="documents-table__cell documents-table__download-cell" ta="center">
+      <Table.Td
+        className="documents-table__cell documents-table__download-cell"
+        ta="center"
+      >
         <ActionIcon
           component="a"
           href={item.downloadLink}
@@ -72,7 +82,12 @@ export const ExternalTable: React.FC = () => {
 
   return (
     <div className="documents-table__wrapper">
-      <Group justify="space-between" align="center" mb="md" className="documents-table__header">
+      <Group
+        justify="space-between"
+        align="center"
+        mb="md"
+        className="documents-table__header"
+      >
         <Text fw={600} size="lg" className="documents-table__title">
           Зовнішні документи
         </Text>
@@ -93,12 +108,8 @@ export const ExternalTable: React.FC = () => {
       >
         <Table.Thead className="documents-table__head">
           <Table.Tr>
-            <Table.Th className="documents-table__th">
-              Назва документа
-            </Table.Th>
-            <Table.Th className="documents-table__th">
-              Автор
-            </Table.Th>
+            <Table.Th className="documents-table__th">Назва документа</Table.Th>
+            <Table.Th className="documents-table__th">Автор</Table.Th>
             <Table.Th ta="center" w={80}></Table.Th>
           </Table.Tr>
         </Table.Thead>
@@ -120,4 +131,3 @@ export const ExternalTable: React.FC = () => {
     </div>
   );
 };
-

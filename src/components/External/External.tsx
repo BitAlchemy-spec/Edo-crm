@@ -1,6 +1,11 @@
-import { type ReactElement } from "react";
-import { ExternalTable } from "./ExternalTable/ExternalTable";
-import style from "./External.module.css";
+/*
+  Компонент: External
+  Описание: Страница для отображения внешних документов. Содержит заголовок, поиск и таблицу `ExternalTable`.
+*/
+
+import { type ReactElement } from 'react';
+import style from './External.module.css';
+import { ExternalTable } from './ExternalTable/ExternalTable';
 
 const External = (): ReactElement => {
   return (
@@ -11,5 +16,3 @@ const External = (): ReactElement => {
 };
 
 export default External;
-
-

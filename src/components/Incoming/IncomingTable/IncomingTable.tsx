@@ -1,6 +1,13 @@
-import { useState } from 'react';
-import { Table, Text, Group, ActionIcon, TextInput } from '@mantine/core';
+/*
+  Компонент: IncomingTable
+  Описание: Таблица для отображения входящих документов. Использует классы `documents-table*` для оформления и адаптивности.
+  Props: не принимает внешних пропсов — данные находятся внутри файла (можно заменить на пропсы или фетчинг с сервера).
+  Экспорт: функция `IncomingTable` как именованный экспорт.
+*/
+
+import { ActionIcon, Group, Table, Text, TextInput } from '@mantine/core';
 import { IconDownload } from '@tabler/icons-react';
+import { useState } from 'react';
 
 interface Document {
   id: string;
@@ -41,7 +48,7 @@ export function IncomingTable() {
     (doc) =>
       doc.title.toLowerCase().includes(search.toLowerCase()) ||
       doc.author.toLowerCase().includes(search.toLowerCase()) ||
-      doc.date.includes(search) // дозволяє шукати по даті
+      doc.date.includes(search), // дозволяє шукати по даті
   );
 
   const rows = filtered.map((item: Document) => (
@@ -87,7 +94,13 @@ export function IncomingTable() {
         />
       </Group>
 
-      <Table striped highlightOnHover withTableBorder withColumnBorders className="documents-table">
+      <Table
+        striped
+        highlightOnHover
+        withTableBorder
+        withColumnBorders
+        className="documents-table"
+      >
         <Table.Thead className="documents-table__head">
           <Table.Tr className="documents-table__row">
             <Table.Th className="documents-table__header-cell">Назва документа</Table.Th>
@@ -114,4 +127,3 @@ export function IncomingTable() {
     </div>
   );
 }
-

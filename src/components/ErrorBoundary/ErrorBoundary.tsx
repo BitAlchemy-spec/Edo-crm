@@ -1,8 +1,15 @@
+/*
+  Компонент: ErrorBoundary
+  Описание: Оборачивающий компонент для перехвата ошибок в дереве React. Показывает пользовательский интерфейс при возникновении ошибки и логирует её при необходимости.
+  Props: обычно принимает `children` и опционально `fallback` UI.
+  Экспорт: именованный/дефолтный (см. реализацию).
+*/
+
 /**
  * Компонент Error Boundary для обработки ошибок в React приложении
  * Перехватывает ошибки рендеринга и отображает fallback UI
  */
-import React, { type ReactNode, Component, type ErrorInfo } from 'react';
+import React, { Component, type ErrorInfo, type ReactNode } from 'react';
 import styles from './ErrorBoundary.module.css';
 
 interface Props {
@@ -64,10 +71,7 @@ class ErrorBoundaryClass extends Component<Props, State> {
       }
 
       return (
-        <ErrorFallback
-          error={this.state.error}
-          resetErrorBoundary={this.resetError}
-        />
+        <ErrorFallback error={this.state.error} resetErrorBoundary={this.resetError} />
       );
     }
 
@@ -96,11 +100,10 @@ const ErrorFallback: React.FC<ErrorFallbackProps> = ({ error, resetErrorBoundary
   return (
     <div className={styles.container}>
       <h1 className={styles.icon}>⚠️</h1>
-      <h2 className={styles.title}>
-        Щось пішло не так
-      </h2>
+      <h2 className={styles.title}>Щось пішло не так</h2>
       <p className={styles.description}>
-        Виникла помилка під час роботи додатку. Будь ласка, спробуйте оновити сторінку або повернутися на головну.
+        Виникла помилка під час роботи додатку. Будь ласка, спробуйте оновити сторінку або
+        повернутися на головну.
       </p>
       {/* Детали ошибки отображаются только в режиме разработки */}
       {error && import.meta.env.DEV && (
@@ -137,12 +140,7 @@ const ErrorFallback: React.FC<ErrorFallbackProps> = ({ error, resetErrorBoundary
  * Предоставляет функциональный API поверх классового компонента
  */
 const ErrorBoundary: React.FC<Props> = ({ children, fallback }) => {
-  return (
-    <ErrorBoundaryClass fallback={fallback}>
-      {children}
-    </ErrorBoundaryClass>
-  );
+  return <ErrorBoundaryClass fallback={fallback}>{children}</ErrorBoundaryClass>;
 };
 
 export default ErrorBoundary;
-

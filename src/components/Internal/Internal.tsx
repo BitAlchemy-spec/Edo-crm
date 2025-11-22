@@ -1,6 +1,13 @@
-import { type ReactElement } from "react";
-import { InternalTable } from "./InternalTable/InternalTable";
-import style from "./Internal.module.css";
+/*
+  Компонент: Internal
+  Описание: Страница/вид для работы с внутренними документами. Отображает заголовок и таблицу `InternalTable`.
+  Props: не принимает пропсы.
+  Экспорт: именованный экспорт функции `Internal`.
+*/
+
+import { type ReactElement } from 'react';
+import style from './Internal.module.css';
+import { InternalTable } from './InternalTable/InternalTable';
 
 const Internal = (): ReactElement => {
   return (
@@ -11,4 +18,3 @@ const Internal = (): ReactElement => {
 };
 
 export default Internal;
-

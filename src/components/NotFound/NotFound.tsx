@@ -1,7 +1,14 @@
+/*
+  Компонент: NotFound
+  Описание: Страница 404 — отображается, когда маршрут не найден. Показывает сообщение и, возможно, ссылку на главную.
+  Props: отсутствуют.
+  Экспорт: дефолтный компонент страницы NotFound.
+*/
+
+import { faArrowLeft, faHome } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import styles from './NotFound.module.css';
 
 const NotFound: React.FC = () => {
@@ -28,7 +35,10 @@ const NotFound: React.FC = () => {
             <FontAwesomeIcon icon={faArrowLeft} className={styles.buttonIcon} />
             Повернутися назад
           </button>
-          <button onClick={handleGoHome} className={`${styles.button} ${styles.buttonPrimary}`}>
+          <button
+            onClick={handleGoHome}
+            className={`${styles.button} ${styles.buttonPrimary}`}
+          >
             <FontAwesomeIcon icon={faHome} className={styles.buttonIcon} />
             На головну
           </button>
@@ -39,4 +49,3 @@ const NotFound: React.FC = () => {
 };
 
 export default NotFound;
-

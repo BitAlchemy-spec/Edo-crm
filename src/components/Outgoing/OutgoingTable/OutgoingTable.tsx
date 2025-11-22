@@ -1,6 +1,13 @@
-import { useState } from 'react';
-import { Table, Text, Group, ActionIcon, TextInput } from '@mantine/core';
+/*
+  Компонент: OutgoingTable
+  Описание: Таблица для списка исходящих документов. Формат совпадает с другими таблицами проекта и использует классы `documents-table*`.
+  Props: данные заданы внутри файла для примера; можно заменить на пропсы или загрузку с API.
+  Экспорт: функция `OutgoingTable` как именованный экспорт.
+*/
+
+import { ActionIcon, Group, Table, Text, TextInput } from '@mantine/core';
 import { IconDownload } from '@tabler/icons-react';
+import { useState } from 'react';
 
 interface Document {
   id: string;
@@ -41,7 +48,7 @@ export function OutgoingTable() {
     (doc) =>
       doc.title.toLowerCase().includes(search.toLowerCase()) ||
       doc.recipient.toLowerCase().includes(search.toLowerCase()) ||
-      doc.date.includes(search)
+      doc.date.includes(search),
   );
 
   const rows = filtered.map((item: Document) => (
@@ -120,4 +127,3 @@ export function OutgoingTable() {
     </div>
   );
 }
-

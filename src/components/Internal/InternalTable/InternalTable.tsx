@@ -1,6 +1,13 @@
-import { useState } from 'react';
-import { Table, Text, Group, ActionIcon, TextInput } from '@mantine/core';
+/*
+  Компонент: InternalTable
+  Описание: Таблица для отображения списка внутренних документов. Использует стили `documents-table*`.
+  Props: не принимает внешних пропсов — данные задаются внутри файла (можно заменить на пропсы/фетчинг).
+  Экспорт: функция `InternalTable` как именованный экспорт.
+*/
+
+import { ActionIcon, Group, Table, Text, TextInput } from '@mantine/core';
 import { IconDownload } from '@tabler/icons-react';
+import { useState } from 'react';
 
 interface Document {
   id: string;
@@ -41,7 +48,7 @@ export function InternalTable() {
     (doc) =>
       doc.title.toLowerCase().includes(search.toLowerCase()) ||
       doc.department.toLowerCase().includes(search.toLowerCase()) ||
-      doc.date.includes(search)
+      doc.date.includes(search),
   );
 
   const rows = filtered.map((item: Document) => (
@@ -120,4 +127,3 @@ export function InternalTable() {
     </div>
   );
 }
-

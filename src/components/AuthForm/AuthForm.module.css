@@ -1,12 +1,30 @@
 :root {
-  --font-main: "Inter", sans-serif;
+  --font-main: 'Inter', sans-serif;
   --button-bg: #1e90ff;
   --button-hover-bg: #007bff;
 }
 
+/* Centering wrapper */
+.authWrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.auth {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* CARD */
 .auth__card {
-  margin: 100px auto;
+  margin: 0 auto;
   width: 100%;
   max-width: 420px;
   background: #fff;
@@ -35,7 +53,7 @@
   background: #fff;
   border-radius: 50%;
   border: 1px solid #eee;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   user-select: none;
   transform: scale(0.95);
   opacity: 0;
@@ -55,7 +73,7 @@
   margin: 0;
   font-size: 1.7rem;
   font-weight: 700;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
   color: #1a1a1a;
 }
 
@@ -136,7 +154,7 @@
 
 .form__input:focus {
   border-color: var(--button-bg);
-  box-shadow: 0 0 0 2px rgba(30,144,255,0.3);
+  box-shadow: 0 0 0 2px rgba(30, 144, 255, 0.3);
   outline: none;
 }
 
@@ -170,7 +188,7 @@
 .form__button:hover {
   background: var(--button-hover-bg);
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(30,144,255,0.3);
+  box-shadow: 0 4px 10px rgba(30, 144, 255, 0.3);
 }
 
 .form__button:active {
@@ -185,23 +203,47 @@
 
 /* ANIMATIONS */
 @keyframes logoAppear {
-  from { transform: scale(0.8); opacity: 0; }
-  to   { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(15px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeInText {
-  from { opacity: 0; transform: translateX(-5px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ===========================
@@ -210,43 +252,83 @@
 
 /* Large Tablet (1200–992) */
 @media (max-width: 1200px) {
-  .auth__card { max-width: 420px; }
+  .auth__card {
+    max-width: 420px;
+  }
 }
 
 /* Tablet (992–768) */
 @media (max-width: 992px) {
-  .auth__card { margin: 80px auto; }
+  .auth__card {
+    margin: 0 auto;
+  }
 }
 
 /* Large Mobile (768–600) */
 @media (max-width: 768px) {
-  .auth__card { margin: 70px auto; max-width: 380px; }
-  .brandName { font-size: 1.5rem; }
-  .logo { width: 60px; height: 60px; }
+  .auth__card {
+    margin: 0 auto;
+    max-width: 380px;
+  }
+  .brandName {
+    font-size: 1.5rem;
+  }
+  .logo {
+    width: 60px;
+    height: 60px;
+  }
 }
 
 /* Mobile (600–480) */
 @media (max-width: 600px) {
-  .auth__card { margin: 60px auto; max-width: 350px; }
-  .form { padding: 24px 20px; }
-  .logoContainer { gap: 10px; }
+  .auth__card {
+    margin: 0 auto;
+    max-width: 350px;
+  }
+  .form {
+    padding: 24px 20px;
+  }
+  .logoContainer {
+    gap: 10px;
+  }
 }
 
 /* Small Mobile (480–360) */
 @media (max-width: 480px) {
-  .auth__card { margin: 40px auto; max-width: 320px; border-radius: 12px; }
-  .logo { width: 54px; height: 54px; }
-  .brandName { font-size: 1.35rem; }
-  .form__input { padding: 10px 14px; }
-  .form__button { padding: 10px; }
+  .auth__card {
+    margin: 0 auto;
+    max-width: 320px;
+    border-radius: 12px;
+  }
+  .logo {
+    width: 54px;
+    height: 54px;
+  }
+  .brandName {
+    font-size: 1.35rem;
+  }
+  .form__input {
+    padding: 10px 14px;
+  }
+  .form__button {
+    padding: 10px;
+  }
 }
 
 /* Ultra Small (360–320) */
 @media (max-width: 360px) {
-  .auth__card { margin: 30px auto; max-width: 300px; }
-  .logo { width: 48px; height: 48px; }
-  .brandName { font-size: 1.2rem; }
-  .form { padding: 20px; }
+  .auth__card {
+    margin: 0 auto;
+    max-width: 300px;
+  }
+  .logo {
+    width: 48px;
+    height: 48px;
+  }
+  .brandName {
+    font-size: 1.2rem;
+  }
+  .form {
+    padding: 20px;
+  }
 }
-
-
